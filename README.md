@@ -1,4 +1,5 @@
 "# extractVariants" 
+![newplot(7)](https://github.com/bfiliks/extractVariants/assets/37164388/940199dc-5f7a-47be-b020-477b5eebf2c9)
 
 # Introduction to the project
 This is my capstone project on Visualizing Variants in Emily Dickinson Archive (EDA).
