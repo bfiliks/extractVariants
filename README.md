@@ -2,7 +2,7 @@
 ![newplot(7)](https://github.com/bfiliks/extractVariants/assets/37164388/940199dc-5f7a-47be-b020-477b5eebf2c9)
 
 # Introduction to the project
-This is my capstone project on visualizing Dickinson textual variants Interested in working with the Emily Dickinson Archive data, visit https://www.edickinson.org/.
+This is my capstone project on visualizing Dickinson textual variants If anyone is interested in working with the Emily Dickinson Archive as data, visit https://www.edickinson.org/
 
 
 # Extracting Variants in EDA: A Computational Approach
@@ -18,7 +18,7 @@ This provides guide in the entire project lifecylce. These include data collecti
 * Documentation and Metadata - methodology, code, data dictionaries, metadata standard, README files
 * Storage and Backup -  requirements, backup and retention schedules, access controls
     * 3-2-1 rule
-* Preservation - 
+* Preservation - see https://zenodo.org/records/10316549
 * Sharing and Reuse
 
 # Visualizing Varaints in EDA
