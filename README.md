@@ -22,7 +22,7 @@ This provides guide in the entire project lifecylce. These include data collecti
 * Sharing and Reuse
 
 # Visualizing Varaints in EDA
-The visual representations are saved under data_visualization folder. You can also check the code folder too see and test the code on your own data on on EDA.
+The visual representations are saved under data_visualization folder. You can also check the code folder too see and test the code on your own data or on EDA.
 
 # Conclusion
 This is data visualization project examining Dickinson textual variants. There are interesting connections and relationship that base texts share with their corresponding variants. 
