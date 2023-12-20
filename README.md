@@ -1,5 +1,4 @@
-![newplot(7)](https://github.com/bfiliks/extractVariants/assets/37164388/940199dc-5f7a-47be-b020-477b5eebf2c9)
-
+<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~foke2/3.embed"></iframe>
 # Introduction to the project
 This is my capstone project on visualizing Dickinson's textual variants If anyone is interested in working with the Emily Dickinson Archive as data, visit https://www.edickinson.org/
 
@@ -27,4 +26,5 @@ The visual representations are saved under data_visualization folder. You can al
 # Conclusion
 This is data visualization project examining Dickinson's textual variants. There are interesting connections and relationship that base texts share with their corresponding variants. 
 
-<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~foke2/3.embed"></iframe>
+
+![newplot(7)](https://github.com/bfiliks/extractVariants/assets/37164388/940199dc-5f7a-47be-b020-477b5eebf2c9)
