@@ -3,6 +3,7 @@
 # Introduction to the project
 This is my capstone project on visualizing Dickinson's textual variants If anyone is interested in working with the Emily Dickinson Archive as data, visit https://www.edickinson.org/
 
+https://plotly.com/~foke2/3/
 
 # Extracting Variants in EDA: A Computational Approach
 When working with large data, it ususally necessary to specify what foramt/method one needs to use to pull the data from an existing database. 
