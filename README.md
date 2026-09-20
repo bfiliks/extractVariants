@@ -1,6 +1,6 @@
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~foke2/3.embed"></iframe>
 # Introduction to the project
-This is my capstone project on visualizing Dickinson's textual variants If anyone is interested in working with the Emily Dickinson Archive as data, visit https://www.edickinson.org/
+This repo is the visualization component of a larger capstone project on the Emily Dickinson Archive, built with two collaborators: **Ria De** and **Samantha Chipman**, who worked on other parts of the larger project. This repo — visualizing Dickinson's textual variants — is my own individual contribution. If anyone is interested in working with the Emily Dickinson Archive as data, visit https://www.edickinson.org/
 
 
 
