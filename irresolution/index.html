@@ -82,6 +82,12 @@ nav.tabs{display:flex;gap:4px;margin:28px 0 18px;border-bottom:1px solid var(--r
 .pair-reason{font-size:12.5px;color:var(--ink-faint);}
 .pair-cat{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);}
 
+.taxonomy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px;}
+.tax-card{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--tax-color,var(--ink-faint));border-radius:2px 8px 8px 2px;box-shadow:var(--shadow);padding:15px 18px;}
+.tax-card h4{font-family:var(--font-display);font-size:15.5px;margin-bottom:2px;}
+.tax-card .tax-count{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);margin-bottom:8px;}
+.tax-card p{font-size:12.5px;color:var(--ink-soft);margin:0;line-height:1.6;}
+.tax-card .tax-example{margin-top:8px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-faint);}
 .about-block{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px;}
 .about-block h3{font-size:15px;margin-bottom:8px;}
 .about-block p{color:var(--ink-soft);font-size:13.5px;line-height:1.7;margin:0 0 10px;max-width:74ch;}
@@ -111,12 +117,26 @@ footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:30px;f
     <button class="tab-btn active" data-tab="open">Genuinely Open <span class="n">(78)</span></button>
     <button class="tab-btn" data-tab="resolved">Resolved by Context <span class="n">(4)</span></button>
     <button class="tab-btn" data-tab="addition">Additions <span class="n">(2)</span></button>
+    <button class="tab-btn" data-tab="taxonomy">Taxonomy</button>
     <button class="tab-btn" data-tab="about">About</button>
   </nav>
 
   <section class="pane active" id="pane-open"><div id="listOpen"></div></section>
   <section class="pane" id="pane-resolved"><div id="listResolved"></div></section>
   <section class="pane" id="pane-addition"><div id="listAddition"></div></section>
+
+  <section class="pane" id="pane-taxonomy">
+    <div class="about-block">
+      <h3>Reading the labels under each variant</h3>
+      <p>Every pair on this page carries two independent labels: <b>what kind of relationship</b> the variant has to its base word (below), and <b>whether the poem resolves it</b> — the Open / Resolved / Addition split the tabs above are organized around. The six categories below are the first axis; they answer "repeats, amplifies, opposes, or adds to the base word?", not "which one did Dickinson mean."</p>
+    </div>
+    <div class="taxonomy-grid" id="taxonomyGrid"></div>
+    <div class="about-block">
+      <h3>The other axis: Exclusive / Non-exclusive</h3>
+      <p><b>Exclusive</b> — the poem itself gives enough information to choose definitively between the base text and the variant. Only 4 of 84 readings in this fascicle qualify.</p>
+      <p><b>Non-exclusive</b> — nothing in the poem forces a choice; both readings remain equally live. 78 of 84 readings (93%) — the tab labeled "Genuinely Open" above.</p>
+    </div>
+  </section>
 
   <section class="pane" id="pane-about">
     <div class="about-block">
@@ -151,6 +171,7 @@ footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:30px;f
     render("listOpen", open, "open");
     render("listResolved", resolved, "resolved");
     render("listAddition", addition, "addition");
+    renderTaxonomy(rows);
 
     document.querySelectorAll(".tab-btn").forEach(function(btn){
       btn.addEventListener("click", function(){
@@ -158,6 +179,28 @@ footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:30px;f
         document.querySelectorAll(".pane").forEach(function(p){ p.classList.toggle("active", p.id==="pane-"+btn.dataset.tab); });
       });
     });
+  }
+
+  var TAXONOMY = [
+    { key:"Repetitives", color:"#6B7A8F", def:"The variant repeats the meaning of the base word or phrase — a near-synonym offered as if it were a live alternative, not a correction." },
+    { key:"Amplifiers", color:"#B08A3E", def:"The variant increases the magnitude of the base word or phrase — the same idea, pushed further or made more intense." },
+    { key:"Antithesis", color:"#8F4A3E", def:"The variant depicts the opposite meaning of the base word. Two special cases: “antinomy” when it outright contradicts the base; “interrogation” when it seems designed to question the base word's meaning rather than replace it." },
+    { key:"Additions", color:"#4A7A63", def:"Not a true alternate reading at all — an addition to part or all of the base text, often what the original taxonomy calls a “successive”: words that follow the base without interrupting it, rather than standing in for it." },
+    { key:"Uncategorized", color:"#8B8272", def:"The variant's relationship to the base word doesn't fit any of the other four categories — named as a real gap in the taxonomy, not hidden inside a false fit." },
+    { key:"Substitutive", color:"#7A3B2E", def:"Plain, roughly equal-status word-for-word substitution — one word standing in for another without clearly repeating, amplifying, opposing, or adding to it. This is not one of the taxonomy's original five categories. It was discovered as a real gap by running this very classification, and shows up in every test of this data (14–56% depending on the run) — the single most common thing the original taxonomy has no name for." }
+  ];
+
+  function renderTaxonomy(rows){
+    var grid = document.getElementById("taxonomyGrid");
+    grid.innerHTML = TAXONOMY.map(function(t){
+      var matches = rows.filter(function(r){ return r.level_1 && r.level_1.indexOf(t.key) === 0; });
+      var example = matches[0];
+      return '<div class="tax-card" style="--tax-color:'+t.color+'"><h4>'+esc(t.key)+'</h4>' +
+        '<div class="tax-count">'+matches.length+' of 84 readings ('+Math.round(matches.length/84*100)+'%)</div>' +
+        '<p>'+t.def+'</p>' +
+        (example ? '<div class="tax-example">e.g. '+esc(example.base)+' &rarr; '+esc(example.variant)+'</div>' : '') +
+      '</div>';
+    }).join("");
   }
 
   function groupByPoem(rows){
