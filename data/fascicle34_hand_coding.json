@@ -19,7 +19,7 @@
     "Linguistic Relations to Variants to one another",
     "Questions"
   ],
-  "note": "variants_list is a best-effort split of the Variants column into discrete items, only where the source text was a clean comma-separated list; left null where the team wrote prose instead, to avoid inventing structure the hand-coding didn't actually have.",
+  "note": "variants_raw is kept exactly as the team wrote it -- comma-separated in most poems, prose or line-numbered annotations in a few (poems 7 and 17 especially). No auto-split into a discrete list is attempted: the source text isn't uniform enough for that to be done without inventing structure that isn't actually there.",
   "poems": [
     {
       "number": "1",
@@ -31,12 +31,7 @@
       "position_additional_notes": "Appear at the foot of the poem. The single cross is above the line-- Superlinnear.  Some variants are separated by crossmarks, some by dashes.",
       "observations_dictionary": "F756 A. Absconded means to leave hurriedly, to escape. Using the first line of the title of the poem-- MS might not have a title. Reading edition not capitalized. Originality vs. reading for ease.",
       "linguistic_relations": "Between the lines or the two words? Not synonyms in a direct sense. Could be implied synonyms to Souls in a literary sense. What of all three variants at once? Bodies is a connection between the three variants. Poem as a whole-- Transport and directionality-- Moving across boundaries. Every sentence begins with a capital word) (What does this imply for the line breaks?) We compared the reading and MS editions--",
-      "questions": "What do we do with variants three to one plus sign?",
-      "variants_list": [
-        "World",
-        "selves",
-        "sun."
-      ]
+      "questions": "What do we do with variants three to one plus sign?"
     },
     {
       "number": "2",
@@ -48,24 +43,7 @@
       "position_additional_notes": "Appear at the foot of the poem. The single cross is above the line-- Superlinnear.  The variants are separated by crossmarks.",
       "observations_dictionary": "Lots of variants to unpack here. F 757 A. J646. A dash in the title sometimes makes a difference.",
       "linguistic_relations": "Between the two words. Every sentence begins with a capital word. No synonyms except ‘true’ and ‘truth’.The word ‘appears’ is crossed.",
-      "questions": "What do we do with alternatives not and adopted, especially with the choices of Dickinson and her publishers?",
-      "variants_list": [
-        "Life",
-        "allowed",
-        "click",
-        "Sepulchre",
-        "wilderness",
-        "Noon",
-        "Meridian",
-        "Night",
-        "tangible- positive",
-        "(appears)",
-        "becomes",
-        "true",
-        "Truth",
-        "been one-- bleak",
-        "qualified"
-      ]
+      "questions": "What do we do with alternatives not and adopted, especially with the choices of Dickinson and her publishers?"
     },
     {
       "number": "3",
@@ -77,13 +55,7 @@
       "position_additional_notes": "",
       "observations_dictionary": "F758 A. A curricle is a two-wheeled carriage pulled by two horses. It doesn’t take long to feel more adjusted to her handwriting online.",
       "linguistic_relations": "",
-      "questions": "",
-      "variants_list": [
-        "Besides",
-        "Vehicle",
-        "hold",
-        "sigh."
-      ]
+      "questions": ""
     },
     {
       "number": "4",
@@ -95,19 +67,7 @@
       "position_additional_notes": "Appear at the foot of the poem.The single cross is above the line-- Superlinnear.  The variants are separated by crossmarks.",
       "observations_dictionary": "F759 A. The F versions are where Position is documented. The crosses tend to hover above or next to the intended place. They do not seem to be positioned below. J649. I am implicitly creating a hierarchy by documenting the Fs positioning over the other versions. It’s a matter of time to get to the other MSs.",
       "linguistic_relations": "Two cross marks before starting of the poem - middle of the page.Between the lines or the two words? In the variants use of three words together, no synonyms, Every sentence begins with a capital word.",
-      "questions": "What do we do with alternates? They impact how variants could function.",
-      "variants_list": [
-        "Too",
-        "swelling",
-        "Feet - of",
-        "fitter for the feet",
-        "Ever could endow",
-        "claim",
-        "signal",
-        "first",
-        "limit",
-        "divide"
-      ]
+      "questions": "What do we do with alternates? They impact how variants could function."
     },
     {
       "number": "5",
@@ -119,8 +79,7 @@
       "position_additional_notes": "Appear at the foot of the poem.The single cross is above the line-- Superlinnear.",
       "observations_dictionary": "F760 A and J650 The position is taken from the F versions. It seems that there are more differences between versions that variants here.",
       "linguistic_relations": "Three cross marks before starting of the poem - middle of the page. The variant is between the two words. Every sentence begins with a capital words.",
-      "questions": "How does the single variant function in the poem?",
-      "variants_list": null
+      "questions": "How does the single variant function in the poem?"
     },
     {
       "number": "6",
@@ -132,12 +91,7 @@
       "position_additional_notes": "Appear at the foot of the poem.The single cross is above the line-- Superlinnear.  Some variants are separated by crossmarks, some by dashes.",
       "observations_dictionary": "F761 A. J651 mirrors the variants.",
       "linguistic_relations": "One variant is between the two words, other one is at the starting of a sentence. Every sentence begins with a capital words.",
-      "questions": "",
-      "variants_list": [
-        "Extravagant",
-        "importunate",
-        "could"
-      ]
+      "questions": ""
     },
     {
       "number": "7",
@@ -149,20 +103,7 @@
       "position_additional_notes": "",
       "observations_dictionary": "Notes taken from version Fr762. This is a poem of variants. There are also many differences between the MS versions.",
       "linguistic_relations": "",
-      "questions": "",
-      "variants_list": [
-        "Some one",
-        "best",
-        "surpass in",
-        "more resembling You",
-        "entice - persuade",
-        "latest",
-        "newest-freshest",
-        "later linger",
-        "regard",
-        "small - dim",
-        "still. Meek is a variant in the other MS version."
-      ]
+      "questions": ""
     },
     {
       "number": "8",
@@ -174,8 +115,7 @@
       "position_additional_notes": "The boundary line is short and a little jagged. There is sometimes notable space in between certain words. Sometimes, they are bracketed by dashes.",
       "observations_dictionary": "P90-22 unavailable on the EDA. Welp. J476 and F763 A were, though. It seems to me that poems without variants aren’t necessarily “blanks” for our research questions.",
       "linguistic_relations": "It would be interesting to examine how an absence of variants does not create an absence of complexity.",
-      "questions": "How do we address poems without variants? It feels premature (and somehow callous) to toss them out. I can see us returning to them after a time, but maybe they should have a place as representative?",
-      "variants_list": null
+      "questions": "How do we address poems without variants? It feels premature (and somehow callous) to toss them out. I can see us returning to them after a time, but maybe they should have a place as representative?"
     },
     {
       "number": "9",
@@ -187,13 +127,7 @@
       "position_additional_notes": "The plus signs are supperlinnear. One of them is right next to a word. Hard to know substitution or addition for sure.",
       "observations_dictionary": "It’s one of the master documents! One of my favorites! The variant list is close to the short boundary line. The variant list is within it. This poem is also explicitly gendered.",
       "linguistic_relations": "This poem needs a close read to unpack relations. At first glance, the first three words can occur to art. In the poem, “roam the in” “roan low In’ are interesting phrases. They might be a phrase mixer. “None harm stir” ‘the art power” are all strange.",
-      "questions": "What do we do with the differences between F764 A and J754? (They are the same poem until they aren’t.)",
-      "variants_list": [
-        "The",
-        "low",
-        "harm",
-        "art."
-      ]
+      "questions": "What do we do with the differences between F764 A and J754? (They are the same poem until they aren’t.)"
     },
     {
       "number": "10",
@@ -205,8 +139,7 @@
       "position_additional_notes": "The script for this poem is more jagged and free than the last two MS.",
       "observations_dictionary": "Fascicle version has no variants. Doesn’t mean that they don’t exist. Did see the difference between “erects” and “enacts” between F765 A and J710.",
       "linguistic_relations": "The EDA indicates that there might be parts for more than one fascicle. No variants in either version in EDA.",
-      "questions": "What do we do with the ones without clear variants (the ones with the + -)?",
-      "variants_list": null
+      "questions": "What do we do with the ones without clear variants (the ones with the + -)?"
     },
     {
       "number": "11",
@@ -218,12 +151,7 @@
       "position_additional_notes": "The boundary line is below the variant list. Words roughly the same size. Space is similar to last poem.",
       "observations_dictionary": "There’s a gulf between “gone” and “known.” “Anodyne” means dissent or a pain killing medication. The cry of the bobolink is very pleasing. F776 A. Against the J-number.",
       "linguistic_relations": "Hard to tell if “all” has a small capital. Poem has a His in it. Each of these terms refers to the center of a thing. Or making a thing or subject manifest. The differences are the ontological levels.",
-      "questions": "What do we do when there might not be a choice-- Is it Not Choosing, then a type of “Not Choosing?”",
-      "variants_list": [
-        "Core",
-        "all",
-        "known"
-      ]
+      "questions": "What do we do when there might not be a choice-- Is it Not Choosing, then a type of “Not Choosing?”"
     },
     {
       "number": "12",
@@ -235,18 +163,7 @@
       "position_additional_notes": "The plus signs are superlinear in between words or lines/near next to words. The boundary line is short and beneath the poem’s body.",
       "observations_dictionary": "Three xxxs above version F767 A.This poem seems to be about religion, and dreaming about the soul while piling on speculations… The variants are roughly the same size as the poem’s body. There is a curious amount of space in between the variant list and poem.",
       "linguistic_relations": "There is no clear correlation between signs, and variants to plus signs. Express might be capitalized. Each of these words seem narratorial. Compared with other word lists, there might be a sequence of abstractions. There is an apportioning out in this poem, a clear theme of heaven. The idea of creation, art, and economy can be traced in the terms. This one needs a close reading for more.",
-      "questions": "Why have I only figured out how to note “Position” with enough detail now? (Reflexive). Piece of learning-- Overemphasize detail from the beginning.",
-      "variants_list": [
-        "Fictitious",
-        "fortune",
-        "- portion",
-        "nearer",
-        "comlier",
-        "cautiously",
-        "express",
-        "- afford",
-        "demur"
-      ]
+      "questions": "Why have I only figured out how to note “Position” with enough detail now? (Reflexive). Piece of learning-- Overemphasize detail from the beginning."
     },
     {
       "number": "13",
@@ -258,11 +175,7 @@
       "position_additional_notes": "The short boundary line is below the variant list. The T’s in the script are wild. The variants are only slightly smaller than the poem’s body. It could be their number.",
       "observations_dictionary": "Extravagant Ts in version J757.",
       "linguistic_relations": "Some of the pencil lines appear darker, more etched in than in some other poems. “With sympathy just”, “with Broad just” “with Sympathy Broad just.”.. Each variant could indicate a degree of delight. These are expansive words. One is about bracketing outwards, and the other could be read as filling an already-full cup.",
-      "questions": "What do we do with turns of affect? The variants sometimes add more extremity, or add it in differently.",
-      "variants_list": [
-        "Broad",
-        "sympathy."
-      ]
+      "questions": "What do we do with turns of affect? The variants sometimes add more extremity, or add it in differently."
     },
     {
       "number": "14",
@@ -274,13 +187,7 @@
       "position_additional_notes": "There seems to be a fold in it. The crossbar is beneath the variant list.",
       "observations_dictionary": "The X squiggle is here, too. J758 is part of the poem with no variants on it.",
       "linguistic_relations": "It’s hard to tell if the variants are choices or additions, or possibly both. There is a sense of arrangement in the list as a whole. The variants as modifiers in the body of the text are also interesting to consider.",
-      "questions": "What do we do with the bits of poems that create the textual process?",
-      "variants_list": [
-        "Bind",
-        "Soon",
-        "fondled  in",
-        "the"
-      ]
+      "questions": "What do we do with the bits of poems that create the textual process?"
     },
     {
       "number": "15",
@@ -292,8 +199,7 @@
       "position_additional_notes": "I wonder how this one came to be placed in between the others, which are very substantive.",
       "observations_dictionary": "No (ish) variants actually caused me to look for variation more.",
       "linguistic_relations": "It seems that we’d be missing depth if we did not consider it in full.",
-      "questions": "Can we unpack the differences in script between these two?",
-      "variants_list": null
+      "questions": "Can we unpack the differences in script between these two?"
     },
     {
       "number": "16",
@@ -305,16 +211,7 @@
       "position_additional_notes": "The crossbar is below the variant list. This variant list has many sparse dashes and plus signs.",
       "observations_dictionary": "J993 signed “Emily.” Her x on J993 kind of looked like a + sign… Ah! F771B has where the variants are placed! The plus signs are in between the words. The meanings sometimes slightly turn the line.",
       "linguistic_relations": "The variants can all be linked to scale, and actions to traverse this scale. There is another reading of their connections as a Journey, or coordinates. Many of these words are qualified, or work to qualify the text. One line is almost entirely interchangeable. This poem would be a good one to interpret/close read.",
-      "questions": "How can we look at the variant lists in of themselves to unpack their position?",
-      "variants_list": [
-        "Journey",
-        "debar",
-        "deprive",
-        "flights",
-        "scan better",
-        "convey us",
-        "scarcely"
-      ]
+      "questions": "How can we look at the variant lists in of themselves to unpack their position?"
     },
     {
       "number": "17",
@@ -326,12 +223,7 @@
       "position_additional_notes": "",
       "observations_dictionary": "F772 B and F772 A have such different line breaks. F772 B has a line break where the other doesn’t have one-- Part Fascicle 34 and part 40? J675 has some really vivid holes-- It appears to be version B. 2 fair copies. One sent to Susan.",
       "linguistic_relations": "",
-      "questions": "What differences do the dashes make?\nWhat’s the difference between Be and Is? “Be/Is not expressed by suns - alone -”",
-      "variants_list": [
-        "3. Be Rosemary",
-        "6. But",
-        "8. H 249 / Ceaseless"
-      ]
+      "questions": "What differences do the dashes make?\nWhat’s the difference between Be and Is? “Be/Is not expressed by suns - alone -”"
     }
   ]
 }
