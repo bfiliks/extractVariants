@@ -2,6 +2,8 @@
 # Introduction to the project
 This repo is the visualization component of a larger capstone project on the Emily Dickinson Archive, built with two collaborators: **Ria De** and **Samantha Chipman**, who worked on other parts of the larger project. This repo — visualizing Dickinson's textual variants — is my own individual contribution. If anyone is interested in working with the Emily Dickinson Archive as data, visit https://www.edickinson.org/
 
+**The full scholarly presentation of this project — with the conceptual framing, contributions to the field, and acknowledgements this README doesn't cover — is published as a Scalar book:** [Dickinsonviz](https://ctsdh.org/dickinsonviz/index/index), hosted by Loyola University Chicago's Center for Textual Studies and Digital Humanities.
+
 
 
 # Extracting Variants in EDA: A Computational Approach
