@@ -1,0 +1,64 @@
+{
+  "source_citation": "Felix Oke, \"Emily Dickinson Archive TEI_files,\" Zenodo, 2023, https://doi.org/10.5281/zenodo.10316549 (CC-BY-4.0). Underlying transcriptions from the Emily Dickinson Archive (edickinson.org), based on The Poems of Emily Dickinson: Variorum Edition, ed. R.W. Franklin (1998).",
+  "note_on_this_file": "Contains only short base-text/variant phrase pairs extracted from <add type=\"alternate\" extent=\"...\">...</add> markup, not full poem transcriptions -- the full TEI corpus is kept out of this repository per its own citation/rights terms and is only used locally, cited by DOI above.",
+  "corrections_to_earlier_rounds": [
+    "Poem 3 ('A little Road- not made of Man'): earlier (round 2) reconstruction from a published reading-edition text had the base/variant direction backwards for one pair. TEI confirms: base 'Curricle' -> variant 'Vehicle' (not the reverse as previously stated).",
+    "Poem 6 ('So much Summer'): earlier reconstruction guessed base 'should' -> variant 'could', misreading an unmarked word. TEI confirms the actual marked pair is base 'Would' -> variant 'Could -', a different word in the poem. The team's own hand-documented 'Extravagant' and 'importunate' variants for 'exorbitant' are NOT present in this TEI transcription at all -- kept as team-observed-only data, not TEI-confirmed (see note below).",
+    "Poem 11 ('No Bobolink- reverse His Singing'): round 2 guessed 'Root' -> 'Core' from position notes and semantic plausibility. Direct inspection of the TEI shows NO variant markup at 'Clove to the Root' at all. This pair is RETRACTED as unconfirmed and likely incorrect. The TEI's actual marked pair at that stanza is base 'Best' -> variant 'All' (matching the team's own list item 'all', previously left unplaced)."
+  ],
+  "archive_completeness_finding": {
+    "summary": "Cross-checking the team's own 2022 hand-documentation against the Emily Dickinson Archive's own TEI transcriptions reveals the archive's transcriptions are themselves incomplete relative to what a careful reader documented from the manuscripts. Poems 1 ('Bereavement...') and 5 ('Pain- has an Element of Blank') have ZERO <add type=\"alternate\"> markup in their TEI files despite the team hand-documenting real variants for both (3 variants for poem 1, in Table 1 of the paper draft; 1 variant, 'time'->'Day', in the Fascicle 34 documentation). Poem 2 ('I think to Live- may be a Bliss') is the clearest quantified case: of the team's 13 hand-documented pairs (Table 1), 11 (85%) match the TEI exactly; 2 ('Bliss'->'Life' and a second 'but been'->'bleak' variant) are absent from the TEI.",
+    "implication": "This is a genuine data-quality finding about the source archive itself, parallel in kind to the AAS Printers' File data-quality findings from the sibling project -- the digital surrogate that's supposed to be authoritative has real, quantifiable gaps against the physical manuscript, findable only by cross-referencing independent human transcription against it."
+  },
+  "classification_summary": {
+    "round_1_source": "Team's own Table 1 worked example (16 pairs, both poems 1 and 2), validated against team-assigned labels",
+    "round_1_substitutive_rate": "9 of 16 (56%)",
+    "round_2_source": "9 pairs verified against published reading-edition texts (before TEI access), first-pass classification, no ground truth",
+    "round_2_substitutive_rate": "3 of 9 (33%)",
+    "round_3_source": "31 pairs verified directly against TEI <add type=\"alternate\"> markup across 9 more poems, first-pass classification, no ground truth",
+    "round_3_substitutive_rate": "10 of 31 (32%)",
+    "combined": "22 of 56 pairs across three independent rounds and all 17 Fascicle 34 poems that have any documented variants (56%, 33%, 32% respectively) -- the 'substitutive' gap is not an artifact of any one round or poem; it is the single largest relationship type the formal five-category taxonomy has no defined category for."
+  },
+  "round_3_pairs": [
+    {"poem": "A little Road- not made of Man", "base_text": "Curricle", "variant": "Vehicle", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "A little Road- not made of Man", "base_text": "Bear", "variant": "hold -", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "Her Sweet turn to leave the Homestead", "base_text": "True", "variant": "too", "level_1": "Additions", "level_2": "Non-exclusive"},
+    {"poem": "Her Sweet turn to leave the Homestead", "base_text": "Loaded", "variant": "swelling", "level_1": "Amplifiers", "level_2": "Non-exclusive"},
+    {"poem": "Her Sweet turn to leave the Homestead", "base_text": "Fitter Feet - of Her", "variant": "fitter for the feet", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "Her Sweet turn to leave the Homestead", "base_text": "Possibly bestow", "variant": "Ever could endow -", "level_1": "Amplifiers", "level_2": "Non-exclusive"},
+    {"poem": "Her Sweet turn to leave the Homestead", "base_text": "ask", "variant": "claim", "level_1": "Amplifiers", "level_2": "Non-exclusive"},
+    {"poem": "Her Sweet turn to leave the Homestead", "base_text": "Motion", "variant": "Signal", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "So much Summer", "base_text": "Guinea", "variant": "Guineas", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "So much Summer", "base_text": "Would", "variant": "Could -", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "Some shall", "variant": "Some one", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "Whole", "variant": "best", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "seduce", "variant": "entice - persuade", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "Longest", "variant": "latest", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "Largest", "variant": "newest - freshest", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "fonder cluster", "variant": "later linger", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "behold", "variant": "regard", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "far", "variant": "small - dim", "level_1": "Additions", "level_2": "Non-exclusive"},
+    {"poem": "Promise This- When You be Dying", "base_text": "Just", "variant": "still", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "My Life had stood- a Loaded Gun", "base_text": "stir", "variant": "harm", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "My Life had stood- a Loaded Gun", "base_text": "Deep", "variant": "low", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "No Bobolink- reverse His Singing", "base_text": "Best", "variant": "All", "level_1": "Amplifiers", "level_2": "Non-exclusive"},
+    {"poem": "One Blessing had I than the rest", "base_text": "Value", "variant": "fortune - portion -", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "One Blessing had I than the rest", "base_text": "ruddier", "variant": "nearer comelier", "level_1": "Substitutive (undefined)", "level_2": "Non-exclusive"},
+    {"poem": "One Blessing had I than the rest", "base_text": "scantily", "variant": "cautiously -", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "One Blessing had I than the rest", "base_text": "disburse -", "variant": "express - afford", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "One Blessing had I than the rest", "base_text": "defer -", "variant": "demur -", "level_1": "Antithesis", "level_2": "Non-exclusive"},
+    {"poem": "The Mountains- grow unnoticed", "base_text": "fellowship -", "variant": "sympathy -", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "These- saw Visions", "base_text": "Latch", "variant": "bind", "level_1": "Amplifiers", "level_2": "Non-exclusive"},
+    {"poem": "These- saw Visions", "base_text": "Quick", "variant": "soon", "level_1": "Repetitives", "level_2": "Non-exclusive"},
+    {"poem": "These- saw Visions", "base_text": "held among", "variant": "fondled in", "level_1": "Amplifiers", "level_2": "Non-exclusive"}
+  ],
+  "team_observed_not_tei_confirmed": {
+    "note": "Variants the team documented by hand in 2022 (data/fascicle34_hand_coding.json) that do not appear in this TEI transcription -- consistent with the archive_completeness_finding above. Kept separately, not merged into the confirmed pairs above.",
+    "pairs": [
+      {"poem": "Bereavement in their death to feel", "base_text": "souls", "variant": "World, selves, Sun (3 variants, per Table 1)"},
+      {"poem": "Pain- has an Element of Blank", "base_text": "time", "variant": "Day"},
+      {"poem": "So much Summer", "base_text": "exorbitant", "variant": "Extravagant, importunate"},
+      {"poem": "I think to Live- may be a Bliss", "base_text": "Bliss / but been", "variant": "Life / bleak (second occurrence)"}
+    ]
+  }
+}

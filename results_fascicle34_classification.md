@@ -34,3 +34,25 @@ There is no team-assigned label to validate these nine against — this is new c
 One genuinely striking result from round 2: the "Root"→"Core" pair (poem 11) was called an **amplifier** ("Core intensifies Root by moving from the tree's literal anchor to its essential center"), while the very next pair in the same poem, "gone"→"known," was called **antithesis (antinomy)** — a direct contradiction, corroborated by the team's own 2022 note flagging exactly this pair as puzzling ("There's a gulf between 'gone' and 'known'"). The taxonomy, applied carefully, agrees with the team's own instinct that something sharper than ordinary variation is happening at that specific word — a case where computational and human reading converge, not diverge.
 
 **Two poems' remaining variants were deliberately left unverified rather than guessed at:** several of Fascicle 34's poems (7, 12, 14, 16, 17 among them) interleave variants within a line in ways the team's own position notes can't fully resolve without the actual manuscript image — the team's own note on poem 9 ("roam the in," "roan low in" — "a phrase mixer") names this exact problem. Extending further requires either the manuscript images themselves (via the Emily Dickinson Archive) or accepting a lower-confidence reconstruction — a decision logged in `PLAN.md`, not made silently here.
+
+## Round 3: the actual manuscript markup, and two corrections round 2 needed
+
+Round 2 reconstructed base/variant pairs from published reading-edition texts, since the manuscript images weren't available. They since became available: the Emily Dickinson Archive's own TEI transcriptions, deposited by this project's own data manager on Zenodo (DOI [10.5281/zenodo.10316549](https://doi.org/10.5281/zenodo.10316549), CC-BY-4.0) for preservation, but deliberately kept out of this GitHub repo out of respect for proper citation and the underlying archive's own rights — used here only locally, cited by DOI, with just short phrase-pairs (not full poem transcriptions) entering this repository's own data files.
+
+That TEI markup — `<add type="alternate" extent="BASE">VARIANT</add>`, encoded directly from the manuscript by the Emily Dickinson Archive — is authoritative in a way reading-edition text and position notes aren't. Cross-checking round 2 against it found two real errors, corrected rather than left standing:
+
+- **Poem 3's "vehicle"/"Curricle" pair had the direction backwards.** The manuscript's actual line reads "no Curricle that rumble there," with "Vehicle" offered as the alternate — the reverse of what the published reading edition's normalized wording suggested.
+- **Poem 6's "should"→"could" pair was a misreading entirely.** The word actually marked with a variant is "Would" ("Would suffice to stow"), not "should" — a different word in the same poem that happens to sit nearby.
+- **Poem 11's "Root"→"Core" pair is retracted.** It was inferred from position notes and semantic plausibility, never confirmed. The TEI shows no markup at "Clove to the Root" at all — the poem's actual marked pair at that stanza is "Best"→"All," which resolves what the team's own list only called "all," previously left unplaced.
+
+**A second, unplanned finding: the archive's own transcriptions are themselves incomplete relative to what the team documented by hand from the manuscripts.** Poems 1 and 5 have *zero* `<add type="alternate">` markup in their TEI files, despite the team hand-documenting real variants for both (three for poem 1, in the paper's own Table 1; one for poem 5). Poem 2 gives the clearest quantified measure: of the team's 13 hand-documented pairs, **11 (85%) match the TEI exactly**; two ("Bliss"→"Life," and a second "but been"→"bleak" reading) are simply absent from the transcription. This is the same kind of finding as the sibling `printers-file-search` project's data-quality audits — a digital surrogate presumed authoritative, found to have real, quantifiable gaps only by checking it against independent human transcription.
+
+**With real manuscript markup for 9 more poems, the substitutive-gap finding now rests on 56 pairs across three independent rounds, not 16:**
+
+| Round | Source | Pairs | "Substitutive (undefined)" rate |
+|---|---|---|---|
+| 1 | Team's own Table 1 (validated against real labels) | 16 | 9/16 = 56% |
+| 2 | Reading-edition text (first-pass, pre-TEI-access) | 9 | 3/9 = 33% |
+| 3 | Actual TEI manuscript markup (first-pass) | 31 | 10/31 = 32% |
+
+Three rounds, all 17 Fascicle 34 poems that have any documented variants, three independent classification passes with no cross-contamination between them, converging on the same number: roughly a third to a half of all real variant relationships in this data are plain substitution — the one relationship the formal five-category taxonomy never defined.
