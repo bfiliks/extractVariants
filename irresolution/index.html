@@ -1,0 +1,190 @@
+<meta charset="utf-8">
+<title>Choosing Not Choosing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,400;0,8..30,600;0,8..30,700;1,8..30,500&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EDE7DD; --surface:#FBF8F2; --surface-2:#E2DACB;
+  --ink:#2B2620; --ink-soft:#5B5346; --ink-faint:#8B8272;
+  --rule:#CFC4AC;
+  --open:#7A3B2E; --open-soft:#F0DAD1;
+  --resolved:#2E5C4A; --resolved-soft:#DCEBE3;
+  --addition:#5B5346; --addition-soft:#E6E0D2;
+  --shadow:0 1px 0 rgba(43,38,32,.05), 0 10px 26px -16px rgba(43,38,32,.35);
+  --font-display:"Piazzolla",Georgia,serif;
+  --font-body:"Public Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+    --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+    --rule:#453A2C;
+    --open:#E0A98C; --open-soft:#3A281F;
+    --resolved:#8FCBAF; --resolved-soft:#1E3329;
+    --addition:#BDB2A0; --addition-soft:#332B22;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+  --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+  --rule:#453A2C;
+  --open:#E0A98C; --open-soft:#3A281F;
+  --resolved:#8FCBAF; --resolved-soft:#1E3329;
+  --addition:#BDB2A0; --addition-soft:#332B22;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;}
+html{color-scheme:light dark;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:14.5px;line-height:1.6;}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;text-wrap:balance;margin:0;color:var(--ink);}
+a{color:var(--ink);}
+.app{max-width:920px;margin:0 auto;padding:34px 18px 80px;}
+
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+h1{font-size:34px;margin-bottom:14px;}
+.lede{font-size:16px;color:var(--ink-soft);max-width:64ch;margin:0 0 30px;}
+.lede em{color:var(--ink);}
+
+.stat-hero{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:34px;box-shadow:var(--shadow);}
+.stat-cell{background:var(--surface);padding:22px 18px;text-align:center;}
+.stat-cell .n{font-family:var(--font-mono);font-size:32px;font-weight:700;font-variant-numeric:tabular-nums;}
+.stat-cell.open .n{color:var(--open);}
+.stat-cell.resolved .n{color:var(--resolved);}
+.stat-cell.addition .n{color:var(--addition);}
+.stat-cell .l{font-size:11.5px;color:var(--ink-faint);margin-top:6px;text-transform:uppercase;letter-spacing:.04em;}
+
+.argument{font-size:15px;color:var(--ink-soft);max-width:66ch;margin-bottom:10px;}
+.argument p{margin:0 0 14px;}
+.argument strong{color:var(--ink);}
+
+nav.tabs{display:flex;gap:4px;margin:28px 0 18px;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.tab-btn{background:transparent;border:none;border-bottom:2px solid transparent;padding:9px 14px;font-size:13px;color:var(--ink-faint);cursor:pointer;font-weight:600;font-family:inherit;}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--ink);}
+.tab-btn .n{font-family:var(--font-mono);opacity:.7;}
+
+.poem-block{margin-bottom:26px;}
+.poem-block h3{font-size:16px;margin-bottom:2px;}
+.poem-meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);margin-bottom:12px;}
+
+.pair-card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:13px 16px;margin-bottom:8px;box-shadow:var(--shadow);}
+.pair-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.pair-words{font-size:15px;}
+.base{font-weight:700;}
+.arrow{color:var(--ink-faint);margin:0 4px;}
+.variant{font-weight:700;}
+.tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:9px;white-space:nowrap;margin-left:auto;}
+.tag.open{background:var(--open-soft);color:var(--open);}
+.tag.resolved{background:var(--resolved-soft);color:var(--resolved);}
+.tag.addition{background:var(--addition-soft);color:var(--addition);}
+.pair-reason{font-size:12.5px;color:var(--ink-faint);}
+.pair-cat{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);}
+
+.about-block{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px;}
+.about-block h3{font-size:15px;margin-bottom:8px;}
+.about-block p{color:var(--ink-soft);font-size:13.5px;line-height:1.7;margin:0 0 10px;max-width:74ch;}
+.about-block p:last-child{margin-bottom:0;}
+footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:30px;font-family:var(--font-mono);}
+.pane{display:none;} .pane.active{display:block;}
+@media (max-width:600px){ .stat-hero{grid-template-columns:1fr;} .pair-head{flex-direction:column;align-items:flex-start;gap:4px;} .tag{margin-left:0;} }
+</style>
+
+<div class="app">
+  <div class="kicker">Fascicle 34 &middot; Emily Dickinson, c. 1863</div>
+  <h1>Choosing Not Choosing</h1>
+  <p class="lede">In 84 places across one fascicle, Dickinson offered more than one wording for the same line. This page doesn't pick a winner. It asks, for each one: <em>does the poem itself give you enough to choose</em> — or is the choice, permanently, yours?</p>
+
+  <div class="stat-hero">
+    <div class="stat-cell open"><div class="n">78</div><div class="l">genuinely open<br>93%</div></div>
+    <div class="stat-cell resolved"><div class="n">4</div><div class="l">resolved by context<br>5%</div></div>
+    <div class="stat-cell addition"><div class="n">2</div><div class="l">additions, not alternatives<br>2%</div></div>
+  </div>
+
+  <div class="argument">
+    <p>Sharon Cameron called this the whole shape of Dickinson's fascicle poetics: <strong>choosing not choosing</strong>. Not indecision — a deliberate refusal to let one reading retire the other. Tested against every documented variant in this one fascicle, that claim holds up almost exactly as strongly as she made it: <strong>93% of the time, nothing in the poem tells you which word she meant to keep.</strong> "Would" and "Could" sit in the same sentence with equal right to be there. "Root" and "Core" both survive a reader's choice. The taxonomy this project built can classify <em>what kind</em> of relationship a variant has to its base word — repeating it, amplifying it, opposing it — without that classification ever forcing a verdict on which one is "correct." Openness isn't a gap in the method. It's the finding.</p>
+    <p>The 5% that <em>do</em> resolve are worth reading closely for exactly that reason — they're the exception that shows the rule is real, not just an artifact of not looking hard enough. In "I think to Live," the poem's own imagery of sun, noon, and midsummer makes "Night" a genuine reversal, not a peer option, for "time." Everywhere else below, both words are still standing.</p>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="open">Genuinely Open <span class="n">(78)</span></button>
+    <button class="tab-btn" data-tab="resolved">Resolved by Context <span class="n">(4)</span></button>
+    <button class="tab-btn" data-tab="addition">Additions <span class="n">(2)</span></button>
+    <button class="tab-btn" data-tab="about">About</button>
+  </nav>
+
+  <section class="pane active" id="pane-open"><div id="listOpen"></div></section>
+  <section class="pane" id="pane-resolved"><div id="listResolved"></div></section>
+  <section class="pane" id="pane-addition"><div id="listAddition"></div></section>
+
+  <section class="pane" id="pane-about">
+    <div class="about-block">
+      <h3>What "resolved" and "open" mean here</h3>
+      <p>Every pair below was classified against a two-level taxonomy: what kind of relationship the variant has to its base word (repeats it, amplifies it, opposes it, or is an addition rather than an alternative), and separately, whether the poem gives enough information to choose definitively between the two readings ("exclusive") or not ("non-exclusive"). That second axis is what this page visualizes. It comes from a larger project testing whether this taxonomy — designed in 2022, before the classification could actually be run — holds up against the complete, manuscript-verified apparatus for this fascicle. Full method and data: <a href="../results_fascicle34_classification.md">results_fascicle34_classification.md</a>.</p>
+      <p>Classification was run by an AI model, blind to any answer key, reasoning from the taxonomy's own definitions and the poem's context. It is a research aid for seeing the shape of the whole fascicle at once — not a claim that any individual "open" or "resolved" call is beyond dispute. Reasonable readers, including the original team, could and did read some of these differently.</p>
+    </div>
+    <div class="about-block">
+      <h3>Rights &amp; credit</h3>
+      <p>Manuscript readings from the Emily Dickinson Archive (Amherst College / Houghton Library, Harvard), used under EDA's <a href="https://curiosity.lib.harvard.edu/emily-dickinson-archive/about/copyright-terms-of-use" target="_blank" rel="noopener">Copyright &amp; Terms of Use</a> (CC BY-NC-ND 3.0), non-commercial research provision. Built on work by Ria De, Samantha Chipman, and Felix Oke (Loyola University Chicago, advised by Marta Werner) — see the <a href="https://ctsdh.org/dickinsonviz/index/index" target="_blank" rel="noopener">Dickinsonviz</a> Scalar book for the full scholarly presentation.</p>
+    </div>
+  </section>
+
+  <footer>Emily Dickinson Archive material used under CC BY-NC-ND 3.0, personal/non-commercial research. Independent research page, not an EDA or Harvard product.</footer>
+</div>
+
+<script>
+(function(){
+  fetch("../data/fascicle34_final_classification.json").then(function(r){ return r.json(); }).then(function(data){
+    init(data.classifications);
+  }).catch(function(err){
+    document.getElementById("listOpen").innerHTML = '<p style="color:var(--ink-faint)">Could not load data: ' + err.message + '</p>';
+  });
+
+  function esc(s){ return (s==null?"":String(s)).replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+
+  function init(rows){
+    var open = rows.filter(function(r){ return r.level_2 === "Non-exclusive"; });
+    var resolved = rows.filter(function(r){ return r.level_2 === "Exclusive"; });
+    var addition = rows.filter(function(r){ return !r.level_2; });
+
+    render("listOpen", open, "open");
+    render("listResolved", resolved, "resolved");
+    render("listAddition", addition, "addition");
+
+    document.querySelectorAll(".tab-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        document.querySelectorAll(".tab-btn").forEach(function(b){ b.classList.toggle("active", b===btn); });
+        document.querySelectorAll(".pane").forEach(function(p){ p.classList.toggle("active", p.id==="pane-"+btn.dataset.tab); });
+      });
+    });
+  }
+
+  function groupByPoem(rows){
+    var map = {}, order = [];
+    rows.forEach(function(r){
+      if (!map[r.poem]) { map[r.poem] = []; order.push(r.poem); }
+      map[r.poem].push(r);
+    });
+    return order.map(function(p){ return { poem:p, rows:map[p] }; });
+  }
+
+  function render(elId, rows, tagClass){
+    var groups = groupByPoem(rows);
+    var el = document.getElementById(elId);
+    if (groups.length === 0) { el.innerHTML = '<p style="color:var(--ink-faint)">None in this category.</p>'; return; }
+    el.innerHTML = groups.map(function(g){
+      var cards = g.rows.map(function(r){
+        var tagLabel = tagClass === "open" ? "open" : tagClass === "resolved" ? "resolved" : "addition";
+        return '<div class="pair-card">' +
+          '<div class="pair-head"><span class="pair-words"><span class="base">'+esc(r.base)+'</span><span class="arrow">&rarr;</span><span class="variant">'+esc(r.variant)+'</span></span>' +
+          '<span class="tag '+tagClass+'">'+tagLabel+'</span></div>' +
+          '<div class="pair-cat">'+esc(r.level_1)+'</div>' +
+          (r.note ? '<div class="pair-reason">'+esc(r.note)+'</div>' : '') +
+        '</div>';
+      }).join("");
+      return '<div class="poem-block"><h3>'+esc(g.poem)+'</h3>'+cards+'</div>';
+    }).join("");
+  }
+})();
+</script>
