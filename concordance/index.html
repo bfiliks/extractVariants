@@ -1,0 +1,243 @@
+<meta charset="utf-8">
+<title>Dickinson Variant Concordance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,400;0,8..30,600;0,8..30,700;1,8..30,500&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EDE7DD; --surface:#FBF8F2; --surface-2:#DFD6C4;
+  --ink:#2B2620; --ink-soft:#5B5346; --ink-faint:#8B8272;
+  --rule:#CFC4AC;
+  --accent:#7A3B2E; --accent-ink:#5C2C22; --accent-soft:#F0DAD1;
+  --shadow:0 1px 0 rgba(43,38,32,.05), 0 10px 26px -16px rgba(43,38,32,.35);
+  --font-display:"Piazzolla",Georgia,serif;
+  --font-body:"Public Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+    --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+    --rule:#453A2C;
+    --accent:#D99B7C; --accent-ink:#EBBFA6; --accent-soft:#3A281F;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+  --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+  --rule:#453A2C;
+  --accent:#D99B7C; --accent-ink:#EBBFA6; --accent-soft:#3A281F;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;}
+html{color-scheme:light dark;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:14.5px;line-height:1.55;}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;text-wrap:balance;margin:0;color:var(--ink);}
+a{color:var(--accent-ink);}
+.app{max-width:1100px;margin:0 auto;padding:28px 18px 70px;}
+
+.masthead{margin-bottom:22px;}
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:8px;}
+.masthead h1{font-size:28px;margin-bottom:8px;}
+.masthead p{margin:0;color:var(--ink-soft);max-width:70ch;font-size:14.5px;}
+
+nav.tabs{display:flex;gap:4px;margin:22px 0 16px;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.tab-btn{background:transparent;border:none;border-bottom:2px solid transparent;padding:9px 14px;font-size:13.5px;color:var(--ink-faint);cursor:pointer;font-weight:600;font-family:inherit;}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--accent);}
+.tab-btn:hover{color:var(--ink);}
+.pane{display:none;}
+.pane.active{display:block;}
+
+.search-row{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
+.search-input{
+  flex:1;min-width:220px;font-family:var(--font-body);font-size:15px;color:var(--ink);background:var(--surface);
+  border:1.5px solid var(--rule);border-radius:7px;padding:11px 14px;
+}
+.search-input:focus{outline:none;border-color:var(--accent);}
+select.field-select{
+  font-family:var(--font-body);font-size:13.5px;color:var(--ink);background:var(--surface-2);
+  border:1px solid var(--rule);border-radius:6px;padding:8px 10px;
+}
+.result-count{font-size:12px;color:var(--ink-faint);margin:8px 0 12px;font-family:var(--font-mono);}
+
+.poem-card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:14px 18px;margin-bottom:10px;}
+.poem-card h3{font-size:15.5px;margin-bottom:2px;}
+.poem-meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);margin-bottom:10px;}
+.poem-meta a{color:var(--ink-faint);text-decoration:underline;}
+.variant-row{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-top:1px solid var(--rule);font-size:13.5px;flex-wrap:wrap;}
+.variant-row:first-of-type{border-top:none;}
+.base-text{font-weight:700;color:var(--ink);}
+.arrow{color:var(--ink-faint);}
+.variant-text{color:var(--accent-ink);font-weight:600;}
+
+table.freq-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden;}
+table.freq-table th{text-align:left;padding:9px 14px;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);border-bottom:1px solid var(--rule);background:var(--surface-2);position:sticky;top:0;}
+table.freq-table td{padding:7px 14px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;}
+table.freq-table tr:last-child td{border-bottom:none;}
+.freq-wrap{max-height:600px;overflow-y:auto;border-radius:8px;}
+.count-badge{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-faint);}
+
+.about-block{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px;}
+.about-block h3{font-size:15px;margin-bottom:8px;}
+.about-block p{color:var(--ink-soft);font-size:13.5px;line-height:1.7;margin:0 0 10px;max-width:74ch;}
+.about-block p:last-child{margin-bottom:0;}
+.stat-line{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);margin:10px 0 0;}
+.empty{padding:30px 16px;text-align:center;color:var(--ink-faint);}
+footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:26px;font-family:var(--font-mono);}
+@media (max-width:600px){ .variant-row{flex-direction:column;gap:2px;} }
+</style>
+
+<div class="app">
+  <div class="masthead">
+    <div class="kicker">Emily Dickinson &middot; Fascicle &amp; loose-sheet manuscripts, via the Emily Dickinson Archive</div>
+    <h1>Dickinson Variant Concordance</h1>
+    <p>1,400 base-text/variant readings across 412 poems where Emily Dickinson offered an alternate word or phrase in manuscript — searchable by poem or by word. Built from R.W. Franklin's critical apparatus, first extracted in 2022&ndash;23 by Ria De, Samantha Chipman, and Felix Oke (Loyola University Chicago, advised by Marta Werner) as part of the <a href="https://ctsdh.org/dickinsonviz/index/index" target="_blank" rel="noopener">Dickinsonviz</a> project, and published here for the first time.</p>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="search">Search by Poem</button>
+    <button class="tab-btn" data-tab="frequency">Most Frequent Substitutions</button>
+    <button class="tab-btn" data-tab="about">About &amp; Data Notes</button>
+  </nav>
+
+  <section class="pane active" id="pane-search">
+    <div class="search-row">
+      <input type="text" id="qSearch" class="search-input" placeholder="Search a poem title, or a base/variant word&hellip;" autocomplete="off">
+      <select id="qFascicleOnly" class="field-select">
+        <option value="">All poems</option>
+        <option value="fascicle">Fascicle poems only</option>
+      </select>
+    </div>
+    <p class="result-count" id="resultCount"></p>
+    <div id="results"></div>
+  </section>
+
+  <section class="pane" id="pane-frequency">
+    <p class="stat-line" style="margin-bottom:10px;">1,143 distinct base&rarr;variant word pairs, ranked by how often that exact substitution recurs across the corpus. Most substitutions happen only once — repetition above 2&ndash;3 is genuinely rare in Dickinson's practice.</p>
+    <div class="freq-wrap">
+      <table class="freq-table">
+        <thead><tr><th>Base</th><th></th><th>Variant</th><th>Times</th></tr></thead>
+        <tbody id="freqBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pane" id="pane-about">
+    <div class="about-block">
+      <h3>What this is</h3>
+      <p>Emily Dickinson's manuscripts routinely offer more than one wording for a line — a word crossed or marked, an alternate written below or beside it. This concordance makes those alternate readings searchable across her known corpus, rather than legible only poem by poem inside <a href="https://curiosity.lib.harvard.edu/emily-dickinson-archive" target="_blank" rel="noopener">the Emily Dickinson Archive</a> itself.</p>
+      <p>The underlying extraction was built in 2022&ndash;23 as part of a Loyola University Chicago capstone project studying Dickinson's textual variants computationally (see <a href="https://github.com/bfiliks/extractVariants" target="_blank" rel="noopener">the project repository</a> for the fuller research, including a from-scratch classification taxonomy tested against Fascicle 34). This page is the first time the full-corpus concordance itself — as opposed to the Fascicle 34 case study — has been made public.</p>
+    </div>
+    <div class="about-block">
+      <h3>Data quality, checked honestly</h3>
+      <p>The full 1,400-pair extraction has not been individually re-verified line by line against the manuscripts — that isn't practical at this scale. What has been done: the one fascicle (34) where every reading was independently re-verified against the Emily Dickinson Archive's live manuscript apparatus was used as a spot-check for the larger extraction.</p>
+      <div class="issue" style="border-left:2px solid var(--accent);padding:6px 0 6px 12px;margin-bottom:10px;font-size:13px;color:var(--ink-soft);"><b>Result: ~87% recall, one confirmed content error, in the one fascicle fully checked.</b> Of 84 manuscript-verified readings in Fascicle 34, roughly 73 appear correctly in this extraction; the rest are missing (not wrong, just absent — consistent with gaps found elsewhere in this same 2022 scraping pass) or belong to variant types (a full-phrase alternate spanning two lines, a base-less pure addition, a second manuscript witness) that a word-level scraper wasn't built to catch. One clear error was found: a "Sun&rarr;Noon" reading appears here as "Sun&rarr;sustain," which doesn't match the manuscript at all.</div>
+      <p>Given that, treat this concordance as a genuinely useful research index — good for finding candidate readings fast — rather than a citation-grade source in itself. For anything going into a publication, the exact reading should be re-checked against <a href="https://curiosity.lib.harvard.edu/emily-dickinson-archive" target="_blank" rel="noopener">the Emily Dickinson Archive</a> directly, the same way Fascicle 34's own readings were.</p>
+    </div>
+    <div class="about-block">
+      <h3>Rights &amp; citation</h3>
+      <p>Manuscript readings ("ED Material") are from the Emily Dickinson Archive, a partnership of Amherst College Archives &amp; Special Collections, Houghton Library at Harvard University, and other holding institutions, based on <em>The Poems of Emily Dickinson: Variorum Edition</em>, ed. R.W. Franklin (1998). Used under EDA's own <a href="https://curiosity.lib.harvard.edu/emily-dickinson-archive/about/copyright-terms-of-use" target="_blank" rel="noopener">Copyright &amp; Terms of Use</a> (CC BY&#8209;NC&#8209;ND 3.0), personal/non-commercial research provision — credit the specific owning institution named on each manuscript's own EDA record before any other use.</p>
+      <p>Dickinson's own poem text is in the public domain; what EDA licenses is its own transcription and imaging work, which this concordance excerpts only as short word/phrase pairs, never full transcriptions or images.</p>
+    </div>
+    <div class="about-block">
+      <h3>Credit</h3>
+      <p><b>Ria De</b> and <b>Samantha Chipman</b> built substantial parts of the larger project this data comes from, presented together at STS 2023 (The New School) under the advisement of <b>Marta Werner</b>, Loyola University Chicago. This page is <b>Felix Oke's</b> own continuation of that shared work.</p>
+    </div>
+    <p class="stat-line" id="aboutStats"></p>
+  </section>
+
+  <footer>Emily Dickinson Archive material used under CC BY-NC-ND 3.0, personal/non-commercial research. This page is an independent research index, not an EDA or Harvard product.</footer>
+</div>
+
+<script>
+(function(){
+  var VARIANTS = [], FREQ = [];
+
+  Promise.all([
+    fetch("data/corpus_variants.json").then(function(r){ return r.json(); }),
+    fetch("data/corpus_variant_frequency.json").then(function(r){ return r.json(); })
+  ]).then(function(res){
+    VARIANTS = res[0]; FREQ = res[1];
+    init();
+  }).catch(function(err){
+    document.getElementById("results").innerHTML = '<div class="empty">Could not load the dataset (' + esc(err.message) + ').</div>';
+  });
+
+  function esc(s){ return (s==null?"":String(s)).replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+
+  function init(){
+    bindTabs();
+    bindSearch();
+    renderFrequency();
+    renderResults();
+    document.getElementById("aboutStats").textContent =
+      VARIANTS.length.toLocaleString() + " base/variant readings across " +
+      new Set(VARIANTS.map(function(v){return v.poem_id;})).size.toLocaleString() + " poems · " +
+      FREQ.length.toLocaleString() + " distinct recurring substitution pairs";
+  }
+
+  function bindTabs(){
+    document.querySelectorAll(".tab-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        document.querySelectorAll(".tab-btn").forEach(function(b){ b.classList.toggle("active", b===btn); });
+        document.querySelectorAll(".pane").forEach(function(p){ p.classList.toggle("active", p.id==="pane-"+btn.dataset.tab); });
+      });
+    });
+  }
+
+  function bindSearch(){
+    document.getElementById("qSearch").addEventListener("input", renderResults);
+    document.getElementById("qFascicleOnly").addEventListener("change", renderResults);
+  }
+
+  function groupByPoem(list){
+    var map = {}, order = [];
+    list.forEach(function(v){
+      if (!map[v.poem_id]) { map[v.poem_id] = []; order.push(v.poem_id); }
+      map[v.poem_id].push(v);
+    });
+    return order.map(function(id){ return { poem_id:id, title: map[id][0].poem_title, year: map[id][0].year, fascicle: map[id][0].fascicle, variants: map[id] }; });
+  }
+
+  function renderResults(){
+    var q = document.getElementById("qSearch").value.trim().toLowerCase();
+    var fascOnly = document.getElementById("qFascicleOnly").value === "fascicle";
+    var matches = VARIANTS.filter(function(v){
+      if (fascOnly && !v.fascicle) return false;
+      if (!q) return true;
+      return v.poem_title.toLowerCase().indexOf(q) !== -1 ||
+             v.base_text.toLowerCase().indexOf(q) !== -1 ||
+             v.variant.toLowerCase().indexOf(q) !== -1;
+    });
+    var poems = groupByPoem(matches);
+    var countEl = document.getElementById("resultCount");
+    countEl.textContent = q || fascOnly
+      ? poems.length.toLocaleString() + " poem" + (poems.length===1?"":"s") + ", " + matches.length.toLocaleString() + " reading" + (matches.length===1?"":"s")
+      : poems.length.toLocaleString() + " poems with documented variants — search a title or word above.";
+
+    var cap = 100;
+    var shown = poems.slice(0, cap);
+    var resEl = document.getElementById("results");
+    if (shown.length === 0) { resEl.innerHTML = '<div class="empty">No matches. Try a shorter word.</div>'; return; }
+
+    resEl.innerHTML = shown.map(function(p){
+      var rows = p.variants.map(function(v){
+        return '<div class="variant-row"><span class="base-text">'+esc(v.base_text)+'</span><span class="arrow">&rarr;</span><span class="variant-text">'+esc(v.variant)+'</span></div>';
+      }).join("");
+      var meta = esc(p.poem_id) + (p.year ? " · " + esc(p.year) : "") + (p.fascicle ? " · Fascicle " + esc(p.fascicle) : "");
+      return '<div class="poem-card"><h3>'+esc(p.title)+'</h3><div class="poem-meta">'+meta+'</div>'+rows+'</div>';
+    }).join("");
+    if (poems.length > cap) {
+      resEl.innerHTML += '<p class="result-count">Showing the first ' + cap + ' of ' + poems.length.toLocaleString() + ' poems — narrow your search to see more precisely.</p>';
+    }
+  }
+
+  function renderFrequency(){
+    var body = document.getElementById("freqBody");
+    body.innerHTML = FREQ.slice(0, 300).map(function(f){
+      return '<tr><td>'+esc(f.base_text)+'</td><td class="arrow">&rarr;</td><td>'+esc(f.variant)+'</td><td class="count-badge">'+f.count+'&times;</td></tr>';
+    }).join("");
+  }
+})();
+</script>

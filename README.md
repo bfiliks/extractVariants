@@ -4,6 +4,10 @@ This repo is the visualization component of a larger capstone project on the Emi
 
 **The full scholarly presentation of this project — with the conceptual framing, contributions to the field, and acknowledgements this README doesn't cover — is published as a Scalar book:** [Dickinsonviz](https://ctsdh.org/dickinsonviz/index/index), hosted by Loyola University Chicago's Center for Textual Studies and Digital Humanities.
 
+**Two things the 2022-23 team started but never finished are now built and published:**
+- [`concordance/index.html`](concordance/index.html) — a searchable **Variant Concordance**: 1,400 base-text/variant readings across 412 poems (not just Fascicle 34), turning `data/modified_eda.csv` — an extraction that had sat unpublished since 2022 — into an actual browsable tool, with an honest data-quality note built from cross-checking it against the manuscript-verified Fascicle 34 data below.
+- [`PLAN.md`](PLAN.md) and [`results_fascicle34_classification.md`](results_fascicle34_classification.md) — the founding 2022 question ("can Dickinson's variants be traced computationally, even without the skillset at the time?") actually tested: the team's own taxonomy applied, blind, to all 84 manuscript-verified readings in Fascicle 34, pulled directly from the Emily Dickinson Archive's live records at Harvard.
+
 
 
 # Extracting Variants in EDA: A Computational Approach
