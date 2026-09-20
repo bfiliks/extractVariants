@@ -1,0 +1,43 @@
+{
+  "source": "Table 1, \"World, Selves, and Sun: A Computational Approach to Emily Dickinson's Variants Textual Studies\" (Ria De, Felix Oke & Samantha Chipman, 2022-23 draft), parsed directly from the source .docx table's own XML structure",
+  "note": "This is the team's own 2022 worked example applying their taxonomy to real base-text/variant pairs from two Fascicle 34 poems -- the only place in the source documents where the taxonomy was actually applied with assigned category labels, as opposed to described in the abstract.",
+  "pairs": [
+    {"poem": "Bereavement in their death to feel", "base_text": "souls", "variant": "World", "part_of_speech": "N", "team_category": "Successive", "notation": "a/b/b/c-C"},
+    {"poem": "Bereavement in their death to feel", "base_text": "souls", "variant": "selves", "part_of_speech": "N", "team_category": "Successive", "notation": "a/b/b/c"},
+    {"poem": "Bereavement in their death to feel", "base_text": "souls", "variant": "Sun", "part_of_speech": "N", "team_category": "Amplification", "notation": "a/b/b/C"},
+    {"poem": "I think to live may be a bliss", "base_text": "Bliss", "variant": "Life", "part_of_speech": "N", "team_category": "Additive", "notation": "a/b/b/C-C"},
+    {"poem": "I think to live may be a bliss", "base_text": "who dare", "variant": "allowed", "part_of_speech": "PP/Vb", "team_category": "Amplification", "notation": "a/b/b/c-c"},
+    {"poem": "I think to live may be a bliss", "base_text": "start", "variant": "click", "part_of_speech": "N", "team_category": "Substitutive", "notation": "a/b/b/c-c"},
+    {"poem": "I think to live may be a bliss", "base_text": "Bankruptcy", "variant": "Sepulchre - Wilderness", "part_of_speech": "N", "team_category": "Substitutive", "notation": "a/b/b/C-CC"},
+    {"poem": "I think to live may be a bliss", "base_text": "Sun", "variant": "Noon", "part_of_speech": "N", "team_category": "Substitutive", "notation": "a/b/b/C-C"},
+    {"poem": "I think to live may be a bliss", "base_text": "Midsummer", "variant": "Meridian", "part_of_speech": "N", "team_category": "Substitutive", "notation": "a/b/b/C-C"},
+    {"poem": "I think to live may be a bliss", "base_text": "time", "variant": "Night", "part_of_speech": "N", "team_category": "Additive", "notation": "a/b/b/c-C"},
+    {"poem": "I think to live may be a bliss", "base_text": "plausible", "variant": "tangible - positive", "part_of_speech": "Adj", "team_category": "Substitutive", "notation": "a/b/b/c-cc"},
+    {"poem": "I think to live may be a bliss", "base_text": "real", "variant": "true", "part_of_speech": "Adj", "team_category": "Substitutive", "notation": "a/b/b/c-c"},
+    {"poem": "I think to live may be a bliss", "base_text": "Real", "variant": "Truth", "part_of_speech": "N", "team_category": "Substitutive", "notation": "a/b/b/C-C"},
+    {"poem": "I think to live may be a bliss", "base_text": "but been", "variant": "been one", "part_of_speech": "VP", "team_category": "Substitutive", "notation": "a/b/b/c-c"},
+    {"poem": "I think to live may be a bliss", "base_text": "but been", "variant": "bleak", "part_of_speech": "Adj", "team_category": "Substitutive", "notation": "a/b/b/c-c"},
+    {"poem": "I think to live may be a bliss", "base_text": "rectified", "variant": "qualified", "part_of_speech": "Adj", "team_category": "Extensive", "notation": "a/b/b/c-c"}
+  ],
+  "blind_classification": {
+    "method": "A fresh agent instance, with no access to team_category above or to this project's conversation history, was given only poem/base_text/variant/part_of_speech plus the paper's own Level 1 and Level 2 taxonomy definitions (quoted verbatim), and asked to classify each pair.",
+    "results": [
+      {"level_1": "Amplifiers", "level_2": "Non-exclusive", "reason": "\"World\" expands the scope of \"souls\" from personal to cosmic magnitude, and nothing in the poem forces a choice among the three noun variants."},
+      {"level_1": "Repetitives", "level_2": "Non-exclusive", "reason": "\"selves\" is essentially synonymous with \"souls\" (both denote the inner person), offered alongside other options with no textual basis to prefer it."},
+      {"level_1": "Amplifiers", "level_2": "Non-exclusive", "reason": "\"Sun\" turns the felt loss of a \"soul\" into a cosmic/vital image, heightening rather than replacing the sense of loss."},
+      {"level_1": "Antithesis", "level_2": "Non-exclusive", "reason": "\"Life\" downgrades the intensified positive state named by \"Bliss\" to mere neutral existence, an implicit opposition in value/tone."},
+      {"level_1": "Antithesis", "level_2": "Non-exclusive", "reason": "\"dare\" locates agency in the self while \"allowed\" relocates it to external permission, an opposition in the source of agency."},
+      {"level_1": "Repetitives", "level_2": "Non-exclusive", "reason": "\"click\" and \"start\" both denote a brief, sudden occurrence, so click just restates the idea in more mechanical/sensory terms."},
+      {"level_1": "Amplifiers", "level_2": "Non-exclusive", "reason": "\"Sepulchre\" and \"Wilderness\" intensify the abstract \"Bankruptcy\" into vivid images of death and desolation."},
+      {"level_1": "Amplifiers", "level_2": "Non-exclusive", "reason": "\"Noon\" pushes \"Sun\" to its most extreme, fullest point in the daily cycle, magnifying rather than merely restating it."},
+      {"level_1": "Repetitives", "level_2": "Non-exclusive", "reason": "\"Meridian\" names the same \"peak point\" idea as \"Midsummer,\" just transposed from seasonal to diurnal register."},
+      {"level_1": "Antithesis", "level_2": "Non-exclusive", "reason": "In the noon-to-night progression, \"Night\" reverses the light/vitality connoted by the surrounding \"time\" imagery."},
+      {"level_1": "Amplifiers", "level_2": "Non-exclusive", "reason": "\"tangible\" and \"positive\" both raise the epistemic certainty of \"plausible\" from merely believable to verified/concrete."},
+      {"level_1": "Repetitives", "level_2": "Non-exclusive", "reason": "\"true\" and \"real\" are near-synonyms describing authenticity, so the variant restates rather than shifts the base meaning."},
+      {"level_1": "Repetitives", "level_2": "Non-exclusive", "reason": "\"Truth\" restates the concept named by \"Real\" (authenticity/actuality) rather than opposing or amplifying it."},
+      {"level_1": "Additions", "level_2": "Non-exclusive", "reason": "\"been one\" reads as a successive completion continuing \"but been\" rather than a true substitute reading."},
+      {"level_1": "Antithesis", "level_2": "Non-exclusive", "reason": "\"bleak\" injects a negative affective charge that opposes the neutral/persistent sense of \"but been,\" echoing the poem's bliss/bleak tension."},
+      {"level_1": "Antithesis", "level_2": "Non-exclusive", "reason": "\"rectified\" implies restoring wholeness/correctness while \"qualified\" implies limitation or partial condition, opposing senses of completeness."}
+    ]
+  }
+}

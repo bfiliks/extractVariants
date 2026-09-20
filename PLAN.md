@@ -15,9 +15,10 @@
 The one piece of "ExtractV" that's newly tractable, now that the skillset exists: **run computational classification against the team's own 2022 hand-coding, as a validation study**, not a replacement for it.
 
 - [x] Parse the Fascicle 34 documentation (currently prose in a `.docx`) into structured records: poem, sheet, base text, variant(s), position, the team's own category judgments where stated. Done 2026-09-20 — `data/fascicle34_hand_coding.json`, parsed directly from the source table's own XML structure (not re-typed from the flattened text), all 17 poems, spot-checked against the original for accuracy.
-- [ ] For each base-text/variant pair, classify it against the paper's own two-level taxonomy using an LLM, blind to the team's original coding.
-- [ ] Measure agreement between the 2023 hand-coding and the computational pass — where they agree, where they don't, and *why* the disagreements happen (this is the actual finding, not a score to optimize).
-- [ ] Write this up as the results section the 2023 paper draft never had.
+- [x] For each base-text/variant pair, classify it against the paper's own two-level taxonomy using an LLM, blind to the team's original coding. Done 2026-09-20, using the team's own 16-pair worked example (Table 1 of the paper draft) as ground truth — the only place the taxonomy was actually applied with real labels, not just described.
+- [x] Measure agreement between the 2023 hand-coding and the computational pass — where they agree, where they don't, and *why* the disagreements happen. Done — see `results_fascicle34_classification.md`. Headline finding: the team's dominant real-world label ("Substitutive," 9 of 16 pairs) was never a defined category in the formal taxonomy at all; where formal categories do exist, human and computational readings still genuinely diverge on individual pairs (e.g. "rectified"→"qualified"), not just on labels.
+- [x] Write this up as the results section the 2023 paper draft never had. Done — `results_fascicle34_classification.md`, with the raw ground-truth and blind-classification data in `data/fascicle34_worked_example_ground_truth.json` for full reproducibility.
+- [ ] Extend the same blind-classification test to the full Fascicle 34 (17 poems, `data/fascicle34_hand_coding.json`) rather than only the 2 poems the team's own worked example covered — the team never assigned formal categories to the other 15 poems at all, so this would be new ground, not a re-test.
 
 ## 3. Other directions — logged, not dropped
 
