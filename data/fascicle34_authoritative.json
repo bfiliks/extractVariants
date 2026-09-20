@@ -1,0 +1,162 @@
+{
+  "source_citation": "Base-text/variant readings transcribed from R.W. Franklin's critical apparatus ('Textual Notes' field), as published in the live IIIF manifests of the Emily Dickinson Archive (Amherst College Archives & Special Collections / Houghton Library, Harvard University; curiosity.lib.harvard.edu/emily-dickinson-archive). Manifest URLs follow the pattern https://nrs.lib.harvard.edu/URN-3:HUL.EDA:W{n}:MANIFEST:3. Used under EDA's Copyright & Terms of Use (CC BY-NC-ND 3.0, https://curiosity.lib.harvard.edu/emily-dickinson-archive/about/copyright-terms-of-use), personal/non-commercial-research provision. This file supersedes data/fascicle34_hand_coding.json's variant fields, data/fascicle34_worked_example_ground_truth.json, data/fascicle34_verified_pairs_round2.json, and data/fascicle34_tei_verified_pairs.json for the purpose of base/variant pair accuracy -- those files are kept for their own record of what was known at each stage, not deleted, since the corrections and retractions along the way are themselves part of this project's own documented process.",
+  "note_on_witnesses": "Where a poem exists in more than one manuscript copy, Franklin's apparatus numbers them (1), (2), (3). Different witnesses can show genuinely different base words at the same line position, not just different variants of the same base word -- these are kept distinct below, not merged.",
+  "note_on_exclusions": "Franklin's apparatus also includes 'Division' notes (where a word wraps across a line break in the manuscript -- not a variant) and occasional 'Emendation' notes (an editor's correction of an apparent slip, e.g. 'thro'' for 'thro') -- neither is a variant reading and neither is included below.",
+  "poems": [
+    {
+      "poem": "Bereavement in their death to feel", "franklin": "F756", "manifest": "W1005", "witnesses": 1,
+      "pairs": [{"line": 11, "base_text": "souls", "variants": ["World", "selves", "Sun"]}]
+    },
+    {
+      "poem": "I think to Live- may be a Bliss", "franklin": "F757", "manifest": "W1006", "witnesses": 1,
+      "pairs": [
+        {"line": 1, "base_text": "Bliss", "variants": ["Life"]},
+        {"line": 2, "base_text": "who dare", "variants": ["allowed"]},
+        {"line": 15, "base_text": "start", "variants": ["click"]},
+        {"line": 16, "base_text": "Bankruptcy -", "variants": ["Sepulchre -", "Wilderness"]},
+        {"line": 17, "base_text": "Sun", "variants": ["Noon"]},
+        {"line": 18, "base_text": "Midsummer", "variants": ["Meridian"]},
+        {"line": 20, "base_text": "time", "variants": ["Night"]},
+        {"line": 22, "base_text": "plausible", "variants": ["tangible -", "positive"]},
+        {"line": 23, "base_text": "real", "variants": ["true"]},
+        {"line": 24, "base_text": "Real", "variants": ["Truth"]},
+        {"line": 27, "base_text": "but been", "variants": ["been one", "bleak"]},
+        {"line": 28, "base_text": "rectified -", "variants": ["qualified -"]}
+      ],
+      "excluded_paleographic_note": "line 22: 'becomes] written appears becomes' -- a note about handwriting revision on the manuscript itself, not a base/variant reading."
+    },
+    {
+      "poem": "A little Road- not made of Man", "franklin": "F758", "manifest": "W1007", "witnesses": 2,
+      "pairs": [
+        {"witness": 1, "line": 5, "base_text": "beyond", "variants": ["besides"]},
+        {"witness": 1, "line": 7, "base_text": "Curricle", "variants": ["Vehicle"]},
+        {"witness": 1, "line": 8, "base_text": "Bear", "variants": ["hold -"]},
+        {"witness": 2, "line": 7, "base_text": "know -", "variants": ["sigh -"], "note": "A different manuscript copy reads a different base word entirely at this position -- not a variant of witness 1's 'Curricle,' but witness 2's own base text."}
+      ]
+    },
+    {
+      "poem": "Her Sweet turn to leave the Homestead", "franklin": "F759", "manifest": "W1008", "witnesses": 2,
+      "pairs": [
+        {"witness": 1, "line": 3, "base_text": "True", "variants": ["too"]},
+        {"witness": 1, "line": 6, "base_text": "Loaded", "variants": ["swelling"]},
+        {"witness": 1, "line": 13, "base_text": "Fitter Feet - of Her", "variants": ["fitter for the feet"]},
+        {"witness": 1, "line": 16, "base_text": "(unmarked)", "variants": ["Ever could endow -"], "note": "Franklin's notation gives no base-text word here, only the line number -- likely a pure addition rather than a substitution for an existing word."},
+        {"witness": 1, "line": 17, "base_text": "ask", "variants": ["claim"]},
+        {"witness": 1, "line": 21, "base_text": "Motion", "variants": ["Signal"]},
+        {"witness": 2, "line": 25, "base_text": "He", "variants": ["first"]},
+        {"witness": 2, "line": 25, "base_text": "Angle", "variants": ["limit"]},
+        {"witness": 2, "line": 26, "base_text": "obscure", "variants": ["divide -"]}
+      ]
+    },
+    {
+      "poem": "Pain- has an Element of Blank", "franklin": "F760", "manifest": "W1009", "witnesses": 1,
+      "pairs": [{"line": 4, "base_text": "time", "variants": ["Day -"]}]
+    },
+    {
+      "poem": "So much Summer", "franklin": "F761", "manifest": "W1010", "witnesses": 1,
+      "pairs": [
+        {"line": 5, "base_text": "exorbitant", "variants": ["extravagant -", "importunate -"]},
+        {"line": 7, "base_text": "Guinea", "variants": ["Guineas"]},
+        {"line": 11, "base_text": "Would", "variants": ["Could -"]}
+      ]
+    },
+    {
+      "poem": "Promise This- When You be Dying", "franklin": "F762", "manifest": "W1011", "witnesses": 3,
+      "pairs": [
+        {"witness": 1, "line": 2, "base_text": "Some shall", "variants": ["Some one"]},
+        {"witness": 1, "line": 13, "base_text": "Whole", "variants": ["best"]},
+        {"witness": 1, "line": "15-16", "base_text": "extol thro' / Imitating You", "variants": ["surpass in / more resembling You"]},
+        {"witness": 1, "line": 18, "base_text": "seduce", "variants": ["entice -", "persuade"]},
+        {"witness": 1, "line": 19, "base_text": "Longest", "variants": ["latest"]},
+        {"witness": 1, "line": 20, "base_text": "Largest", "variants": ["newest -", "freshest"]},
+        {"witness": 1, "line": 23, "base_text": "fonder cluster", "variants": ["later linger"]},
+        {"witness": 1, "line": 27, "base_text": "behold", "variants": ["regard"]},
+        {"witness": 1, "line": 27, "base_text": "far", "variants": ["small -", "dim"]},
+        {"witness": 1, "line": 29, "base_text": "Just", "variants": ["still"]},
+        {"witness": 3, "line": 8, "base_text": "low", "variants": ["meek -"]}
+      ],
+      "note": "Witness 2 shares the same lines 15-16 and 27 with alternate readings ('Bliss', 'scarce') per the apparatus's 'alt (2)' notes, but Franklin's own notation leaves the base-text side blank for witness 2 at line 15-16 -- not confidently reconstructable as a clean pair, left out rather than guessed at."
+    },
+    {
+      "poem": "I had no time to Hate", "franklin": "F763", "manifest": "W1012", "witnesses": 1,
+      "pairs": [],
+      "note": "Confirmed, from Harvard's own record: no variants. Matches the team's own 2022 note exactly."
+    },
+    {
+      "poem": "My Life had stood- a Loaded Gun", "franklin": "F764", "manifest": "W1013", "witnesses": 1,
+      "pairs": [
+        {"line": 5, "base_text": "in", "variants": ["the -"]},
+        {"line": 16, "base_text": "Deep", "variants": ["low"]},
+        {"line": 18, "base_text": "stir", "variants": ["harm"]},
+        {"line": 23, "base_text": "power", "variants": ["art"]}
+      ]
+    },
+    {
+      "poem": "The sunrise runs for Both", "franklin": "F765", "manifest": "W1014", "witnesses": 1,
+      "pairs": [],
+      "note": "Confirmed, from Harvard's own record: no variants. Matches the team's own 2022 note exactly."
+    },
+    {
+      "poem": "No Bobolink- reverse His Singing", "franklin": "F766", "manifest": "W1015", "witnesses": 1,
+      "pairs": [
+        {"line": 5, "base_text": "Root", "variants": ["Core"], "note": "RESTORED: round 3 retracted this pair because the project's local 2022 TEI scrape had no markup here. Harvard's own live apparatus confirms it is real -- the local scrape missed it, same pattern as poems 1 and 5. The retraction itself was premature; corrected here."},
+        {"line": 7, "base_text": "Best", "variants": ["All"]},
+        {"line": 7, "base_text": "gone -", "variants": ["known -"]}
+      ]
+    },
+    {
+      "poem": "One Blessing had I than the rest", "franklin": "F767", "manifest": "W1016", "witnesses": 1,
+      "pairs": [
+        {"line": 10, "base_text": "Phantasms", "variants": ["fictitious"]},
+        {"line": 11, "base_text": "Value", "variants": ["fortune -", "portion -"]},
+        {"line": 14, "base_text": "ruddier", "variants": ["nearer", "comelier"]},
+        {"line": 17, "base_text": "scantily", "variants": ["cautiously -"]},
+        {"line": 17, "base_text": "disburse -", "variants": ["express -", "afford"]},
+        {"line": 18, "base_text": "defer -", "variants": ["demur -"]}
+      ]
+    },
+    {
+      "poem": "The Mountains- grow unnoticed", "franklin": "F768", "manifest": "W1017", "witnesses": 1,
+      "pairs": [
+        {"line": 6, "base_text": "just", "variants": ["broad"]},
+        {"line": 8, "base_text": "fellowship -", "variants": ["sympathy -"]}
+      ]
+    },
+    {
+      "poem": "These- saw Visions", "franklin": "F769", "manifest": "W1018", "witnesses": 2,
+      "pairs": [
+        {"witness": 1, "line": 2, "base_text": "Latch", "variants": ["bind"]},
+        {"witness": 1, "line": 6, "base_text": "Quick", "variants": ["soon"]},
+        {"witness": 1, "line": 9, "base_text": "held among", "variants": ["fondled in"]},
+        {"witness": 1, "line": 13, "base_text": "for", "variants": ["the -"], "note": "occurs twice in the line per the apparatus"},
+        {"witness": 2, "line": 2, "base_text": "Latch", "variants": ["Bar"], "note": "A second manuscript copy offers a different alternate for the same base word."}
+      ]
+    },
+    {
+      "poem": "Strong Draughts of Their Refreshing Minds", "franklin": "F770", "manifest": "W1019", "witnesses": 1,
+      "pairs": [],
+      "note": "Confirmed, from Harvard's own record: no variant readings, only line-division notes. Matches the team's own 2022 note exactly."
+    },
+    {
+      "poem": "We miss Her- not because We see", "franklin": "F771", "manifest": "W1020 (fascicle copy), W1021 (fair copy sent to Susan Dickinson, signed 'Emily')", "witnesses": 3,
+      "pairs": [
+        {"witness": 1, "line": 2, "base_text": "Absence", "variants": ["Journey"]},
+        {"witness": 1, "line": 4, "base_text": "Abridge", "variants": ["debar -", "deprive -"]},
+        {"witness": 1, "line": 5, "base_text": "Routes", "variants": ["flights"]},
+        {"witness": 1, "line": 8, "base_text": "Include Us -", "variants": ["Scan better -", "Convey Us -"]},
+        {"witness": 2, "line": 4, "base_text": "Abridge", "variants": ["impair"], "note": "A different alternate for the same base word, in the copy sent to Susan Dickinson."},
+        {"witness": 3, "line": 5, "base_text": "slightly", "variants": ["scarcely"]}
+      ]
+    },
+    {
+      "poem": "Essential Oils- are wrung", "franklin": "F772", "manifest": "W1022", "witnesses": 1,
+      "pairs": [
+        {"line": 3, "base_text": "Is", "variants": ["Be"]},
+        {"line": 6, "base_text": "While", "variants": ["But"]},
+        {"line": 8, "base_text": "Spiceless Sepulchre", "variants": ["Ceaseless Rosemary"]}
+      ]
+    }
+  ],
+  "total_pairs": 72,
+  "poems_confirmed_variant_free": 3
+}
