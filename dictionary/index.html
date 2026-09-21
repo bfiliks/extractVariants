@@ -1,0 +1,167 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>Eliminating the Other Meanings</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,400;0,8..30,600;0,8..30,700;1,8..30,500&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EDE7DD; --surface:#FBF8F2; --surface-2:#E2DACB;
+  --ink:#2B2620; --ink-soft:#5B5346; --ink-faint:#8B8272;
+  --rule:#CFC4AC;
+  --mark:#F0DAD1; --mark-ink:#7A3B2E;
+  --badge-verified:#DCEBE3; --badge-verified-ink:#2E5C4A;
+  --badge-unverified:#F0DAD1; --badge-unverified-ink:#7A3B2E;
+  --shadow:0 1px 0 rgba(43,38,32,.05), 0 10px 26px -16px rgba(43,38,32,.35);
+  --font-display:"Piazzolla",Georgia,serif;
+  --font-body:"Public Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+    --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+    --rule:#453A2C;
+    --mark:#3A281F; --mark-ink:#E0A98C;
+    --badge-verified:#1E3329; --badge-verified-ink:#8FCBAF;
+    --badge-unverified:#3A281F; --badge-unverified-ink:#E0A98C;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+  --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+  --rule:#453A2C;
+  --mark:#3A281F; --mark-ink:#E0A98C;
+  --badge-verified:#1E3329; --badge-verified-ink:#8FCBAF;
+  --badge-unverified:#3A281F; --badge-unverified-ink:#E0A98C;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;}
+html{color-scheme:light dark;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:14.5px;line-height:1.6;}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;text-wrap:balance;margin:0;color:var(--ink);}
+a{color:var(--ink);}
+.app{max-width:900px;margin:0 auto;padding:34px 18px 80px;}
+
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+h1{font-size:32px;margin-bottom:14px;}
+.lede{font-size:16px;color:var(--ink-soft);max-width:66ch;margin:0 0 10px;}
+.lede em{color:var(--ink);}
+.source-note{font-size:12.5px;color:var(--ink-faint);max-width:66ch;margin:0 0 26px;}
+.source-note a{color:var(--ink-faint);}
+
+.search-row{margin-bottom:22px;}
+#search{width:100%;font-family:var(--font-body);font-size:15px;padding:12px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);}
+#search:focus{outline:2px solid var(--ink-faint);outline-offset:1px;}
+#search::placeholder{color:var(--ink-faint);}
+.search-hint{font-size:11.5px;color:var(--ink-faint);margin-top:6px;font-family:var(--font-mono);}
+
+.cards{display:flex;flex-direction:column;gap:14px;margin-bottom:30px;}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:10px;box-shadow:var(--shadow);padding:20px 24px;}
+.card-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px;}
+.headword{font-size:22px;font-weight:700;}
+.pos{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);}
+.badge{font-family:var(--font-mono);font-size:10px;letter-spacing:.03em;text-transform:uppercase;padding:2px 9px;border-radius:9px;margin-left:auto;white-space:nowrap;}
+.badge.verified{background:var(--badge-verified);color:var(--badge-verified-ink);}
+.badge.unverified{background:var(--badge-unverified);color:var(--badge-unverified-ink);}
+.etym{font-size:12.5px;color:var(--ink-faint);font-style:italic;margin-bottom:12px;}
+.used-for{font-size:12.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:6px;padding:8px 12px;margin-bottom:14px;}
+.used-for b{color:var(--ink);}
+ol.senses{margin:0;padding-left:22px;}
+ol.senses li{margin-bottom:7px;font-size:14px;color:var(--ink-soft);}
+ol.senses li.aligned{color:var(--ink);background:var(--mark);margin-left:-10px;padding:4px 10px;border-radius:5px;list-style-position:inside;}
+ol.senses li.aligned::marker{color:var(--mark-ink);font-weight:700;}
+.aligned-tag{font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--mark-ink);margin-left:6px;}
+.citation{font-size:11.5px;color:var(--ink-faint);margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);}
+.no-results{color:var(--ink-faint);font-size:13.5px;padding:20px 0;}
+
+.about-block{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px;}
+.about-block h3{font-size:15px;margin-bottom:8px;}
+.about-block p{color:var(--ink-soft);font-size:13.5px;line-height:1.7;margin:0 0 10px;max-width:74ch;}
+.about-block p:last-child{margin-bottom:0;}
+.about-block blockquote{margin:0 0 10px;padding:8px 14px;border-left:3px solid var(--rule);color:var(--ink-soft);font-size:13px;font-style:italic;}
+footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:30px;font-family:var(--font-mono);}
+</style></head><body>
+
+<div class="app">
+  <div class="kicker">Webster's 1844 &middot; the team's own working dictionary</div>
+  <h1>Eliminating the Other Meanings</h1>
+  <p class="lede">The 2022-23 team's own method for aligning a base word with its variant: look both up in Noah Webster's 1844 dictionary, find the one sense each shares, and set the rest aside. <em>"The meaning of the word power in A matches with the meaning of art in C. So we eliminate the other meanings."</em> This is the small set of entries they're known to have actually consulted while doing that &mdash; not a general-purpose dictionary.</p>
+  <p class="source-note">Three of these five (Self, Sun, World) are transcribed from dictionary-page screenshots embedded as images in the team's own 2023 STS conference slides &mdash; images this project's earlier text-only extraction of that file never captured. See <a href="https://github.com/bfiliks/extractVariants/blob/main/data/webster1844_entries.json" target="_blank" rel="noopener">webster1844_entries.json</a> for the full dataset and sourcing notes.</p>
+
+  <div class="search-row">
+    <input id="search" type="text" placeholder="Search a headword or a sense&hellip;" autocomplete="off">
+    <div class="search-hint" id="searchHint">5 entries</div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="about-block">
+    <h3>Why so small</h3>
+    <p>This isn't a digitized Webster's 1828/1844 &mdash; full editions already exist online (the team's own citations: <a href="https://webstersdictionary1828.com/" target="_blank" rel="noopener">webstersdictionary1828.com</a>, <a href="https://edl.byu.edu/index.php" target="_blank" rel="noopener">edl.byu.edu</a>). What was missing was much narrower: a structured, queryable record of the handful of entries the team is actually known to have looked up while arguing for a specific alignment &mdash; recoverable only because the underlying dictionary pages happened to survive as slide screenshots rather than as extractable text.</p>
+    <p>Self, Sun, and World carry a <span class="badge verified" style="margin-left:0">verified</span> badge because they're direct transcriptions of a scanned period page. Power and Art carry an <span class="badge unverified" style="margin-left:0">unverified</span> badge: they're exactly as given in the paper's own prose, but their format &mdash; short bulleted senses with a modern-linguistics etymology notation ([ME &lt; AFr &lt; Late L.]) &mdash; doesn't match how a real 1844 page reads (compare the dense, run-on prose of the Self/Sun/World entries above). Most likely this is the team's own condensed paraphrase of their cited source rather than a verbatim quotation. Reproduced as they wrote it, flagged rather than corrected, since it's their own text.</p>
+    <p>Manuscript and taxonomy work elsewhere in this project used under the Emily Dickinson Archive's <a href="https://curiosity.lib.harvard.edu/emily-dickinson-archive/about/copyright-terms-of-use" target="_blank" rel="noopener">Copyright &amp; Terms of Use</a> (CC BY-NC-ND 3.0); Webster's 1844 dictionary itself is public domain. Credit: Ria De, Samantha Chipman, and Felix Oke (Loyola University Chicago, advised by Marta Werner) &mdash; see <a href="https://ctsdh.org/dickinsonviz/index/index" target="_blank" rel="noopener">Dickinsonviz</a> for the full scholarly presentation.</p>
+  </div>
+
+  <footer>Independent research page, not an EDA, Harvard, or Webster's Dictionary product.</footer>
+</div>
+
+<script>
+(function(){
+  function esc(s){ return (s==null?"":String(s)).replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+
+  fetch("data/webster1844_entries.json").then(function(r){ return r.json(); }).then(function(data){
+    init(data.entries);
+  }).catch(function(err){
+    document.getElementById("cards").innerHTML = '<p style="color:var(--ink-faint)">Could not load data: ' + esc(err.message) + '</p>';
+  });
+
+  function cardHTML(e){
+    var badge = e.verified
+      ? '<span class="badge verified">Scanned transcription</span>'
+      : '<span class="badge unverified">Unverified paraphrase</span>';
+    var senses = e.senses.map(function(s, i){
+      var aligned = e.used_for && e.used_for.aligned_sense_index === i;
+      return '<li class="' + (aligned ? "aligned" : "") + '">' + esc(s) + (aligned ? '<span class="aligned-tag">the sense they kept</span>' : '') + '</li>';
+    }).join("");
+    var usedFor = e.used_for
+      ? '<div class="used-for">Used to align <b>' + esc(e.used_for.pair) + '</b> in &ldquo;' + esc(e.used_for.poem) + '&rdquo;' + (e.used_for.note ? ' &mdash; ' + esc(e.used_for.note) : '') + '</div>'
+      : "";
+    return '<div class="card" data-search="' + esc((e.headword + " " + e.senses.join(" ")).toLowerCase()) + '">' +
+      '<div class="card-head"><span class="headword">' + esc(e.headword) + '</span><span class="pos">' + esc(e.part_of_speech) + '</span>' + badge + '</div>' +
+      '<div class="etym">' + esc(e.etymology) + '</div>' +
+      usedFor +
+      '<ol class="senses">' + senses + '</ol>' +
+      '<div class="citation">' + esc(e.source_citation) + '</div>' +
+    '</div>';
+  }
+
+  function init(entries){
+    var container = document.getElementById("cards");
+    var hint = document.getElementById("searchHint");
+    container.innerHTML = entries.map(cardHTML).join("");
+
+    document.getElementById("search").addEventListener("input", function(){
+      var q = this.value.trim().toLowerCase();
+      var cards = container.querySelectorAll(".card");
+      var shown = 0;
+      cards.forEach(function(c){
+        var match = !q || c.dataset.search.indexOf(q) !== -1;
+        c.style.display = match ? "" : "none";
+        if (match) shown++;
+      });
+      hint.textContent = q ? (shown + " of " + entries.length + " entries match “" + q + "”") : (entries.length + " entries");
+      var existing = container.querySelector(".no-results");
+      if (existing) existing.remove();
+      if (shown === 0){
+        var p = document.createElement("p");
+        p.className = "no-results";
+        p.textContent = "No headword or sense matches that search.";
+        container.appendChild(p);
+      }
+    });
+  }
+})();
+</script>
+</body></html>

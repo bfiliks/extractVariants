@@ -1,0 +1,130 @@
+{
+  "note": "Small, hand-built dataset -- not a full dictionary. These are the only Webster's-dictionary entries the 2022-23 team is known to have actually consulted while arguing for a specific variant alignment, recovered from two sources: three (Self, Sun, World) are transcriptions of scanned dictionary-page screenshots embedded as images in the team's own 2023 STS conference slide deck (images never captured by this project's earlier text-only extraction of that file); two (Power, Art) are as given directly in the paper draft's own prose, in a format that does not match a period-scanned page and looks like the team's own condensed paraphrase of their cited source rather than a verbatim quotation -- flagged, not corrected, since it is their own text.",
+  "entries": [
+    {
+      "headword": "Self",
+      "part_of_speech": "a. or pron.; plu. Selves",
+      "etymology": "Sax. self, sylf; Goth. silba; Sw. sielf; Dan. selv; G. selbst; D. zelf.",
+      "senses": [
+        "In old authors, this word sometimes signifies particular, very, or same.",
+        "In present usage, self is united to certain personal pronouns and pronominal adjectives, to express emphasis or distinction; also when the pronoun is used reciprocally; as, I myself.",
+        "Self is sometimes used as a noun, noting the individual subject to his own contemplation or action, or noting identity of person. Consciousness makes every one to be what he calls self.",
+        "It also signifies personal interest, or love of private interest; selfishness. Self is much used in composition."
+      ],
+      "used_for": {
+        "poem": "Bereavement in their Death to Feel",
+        "pair": "souls → selves",
+        "aligned_sense_index": null,
+        "note": "Pulled up alongside Sun (same slide) while the team worked through the poem's three variants on '+ souls'. The slides don't record which numbered sense they judged operative -- unlike the power/art example below, there's no explicit 'sense A matches sense C' statement to reproduce here."
+      },
+      "source_type": "scanned transcription",
+      "source_citation": "Noah Webster, An American Dictionary of the English Language (1844 ed.), NYPL/Google Books scan, via the team's 2023 STS conference slides (“Textual Variants in Dickinson's Poems,” Slide 12).",
+      "verified": true
+    },
+    {
+      "headword": "Sun",
+      "part_of_speech": "n.",
+      "etymology": "Sax. sunna; Goth. sunno; G. sonne; D. zon.",
+      "senses": [
+        "The splendid orb or luminary which, being in or near the centre of our system of worlds, gives light and heat to all the planets.",
+        "In popular usage, a sunny place; a place where the beams of the sun fall.",
+        "Any thing eminently splendid or luminous; that which is the chief source of light or honor.",
+        "In Scripture, Christ is called the Sun of righteousness, as the source of light, animation and comfort to his disciples.",
+        "The luminary or orb which constitutes the centre of any system of worlds. -- Under the sun: in the world; on earth; a proverbial expression."
+      ],
+      "used_for": {
+        "poem": "Bereavement in their Death to Feel",
+        "pair": "souls → Sun",
+        "aligned_sense_index": null,
+        "note": "Same slide as Self, same caveat: no recorded sense-level argument to reproduce."
+      },
+      "source_type": "scanned transcription",
+      "source_citation": "Noah Webster, An American Dictionary of the English Language (1844 ed.), NYPL/Google Books scan, via the team's 2023 STS conference slides (“Textual Variants in Dickinson's Poems,” Slide 12).",
+      "verified": true
+    },
+    {
+      "headword": "World",
+      "part_of_speech": "n.",
+      "etymology": "Sax. woruld, weruld; D. waereld; Sw. verld.",
+      "senses": [
+        "The universe; the whole system of created globes and vast bodies of matter.",
+        "The earth; the terraqueous globe.",
+        "The heavens.",
+        "System of beings; or the orbs which occupy space, and all the beings which inhabit them. Heb. xi.",
+        "Present state of existence.",
+        "A secular life.",
+        "Public life; or society.",
+        "Business or trouble of life.",
+        "A great multitude or quantity.",
+        "Mankind; people in general; in an indefinite sense.",
+        "Course of life.",
+        "Universal empire.",
+        "The customs and manners of men; the practice of life.",
+        "All the world contains.",
+        "The principal nations or countries of the earth.",
+        "The Roman empire. Scripture.",
+        "A large tract of country; a wide compass of things.",
+        "The inhabitants of the earth; the whole human race. John iii.",
+        "The carnal state or corruption of the earth. Gal. i.",
+        "The ungodly part of the world.",
+        "Time; as in the phrase, world without end.",
+        "A collection of wonders; [obs.] -- In the world: in possibility. -- For all the world: (1) Exactly; [little used.] Sidney. (2) For any consideration."
+      ],
+      "used_for": {
+        "poem": "Bereavement in their Death to Feel",
+        "pair": "souls → World",
+        "aligned_sense_index": null,
+        "note": "This slide sits in the deck's own 'Extra Slides -- Not for STS use' section (slides 22+), so World may have been backup material the team prepared but didn't present live, unlike Self/Sun on slide 12."
+      },
+      "source_type": "scanned transcription",
+      "source_citation": "Noah Webster, An American Dictionary of the English Language (1844 ed.), NYPL/Google Books scan, via the team's 2023 STS conference slides (“Textual Variants in Dickinson's Poems,” Slide 26).",
+      "verified": true
+    },
+    {
+      "headword": "Power",
+      "part_of_speech": "n.",
+      "etymology": "ME < AFr < Late L. potēre, to be able.",
+      "senses": [
+        "Ability; capacity; capability; skill; aptitude.",
+        "Strength; might; stamina; endurance; fortitude; [fig.] will; courage; heart; spirit; determination.",
+        "Influence; ability to affect; capacity to impact.",
+        "Force; violence; aggression.",
+        "Fuel; energy source.",
+        "Life force; potential to live, die, and resurrect from the dead.",
+        "[Fig.] God; omnipotent being; supremely divine entity.",
+        "[Fig.] Satan; tempter; deceiver; temptation; enticement.",
+        "[Fig.] means; way; method; process."
+      ],
+      "used_for": {
+        "poem": "Though I than He may longer live",
+        "pair": "power → art",
+        "aligned_sense_index": 0,
+        "note": "The paper states this directly: “the meaning of the word power in A matches with the meaning of art in C. So we eliminate the other meanings.” Sense A (index 0, “Ability; capacity...”) is the one the team kept."
+      },
+      "source_type": "paper-draft text, format unverified against a period scan",
+      "source_citation": "As given in “World, Selves, and Sun” (2022-23 draft), citing edl.byu.edu and webstersdictionary1828.com.",
+      "verified": false
+    },
+    {
+      "headword": "Art",
+      "part_of_speech": "n. (-s)",
+      "etymology": "OFr < L. ars, to fit.",
+      "senses": [
+        "Gift; talent; genius; aesthetic sensibility; mastery of dance, music, painting, or other enhancing skills.",
+        "Trade; craft; set of rules which enables one to create.",
+        "Ability; power; competence; faculty; that which enables one to perform various tasks.",
+        "Technique; method; procedure; approach; strategy.",
+        "Decoration; embellishment; [fig.] natural beauty."
+      ],
+      "used_for": {
+        "poem": "Though I than He may longer live",
+        "pair": "power → art",
+        "aligned_sense_index": 2,
+        "note": "Sense C (index 2, “Ability; power; competence...”) is the sense the paper says matches power's sense A -- both are the “ability” sense of each word; every other sense of each word is set aside for this alignment."
+      },
+      "source_type": "paper-draft text, format unverified against a period scan",
+      "source_citation": "As given in “World, Selves, and Sun” (2022-23 draft), citing edl.byu.edu and webstersdictionary1828.com.",
+      "verified": false
+    }
+  ]
+}
