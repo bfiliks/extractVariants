@@ -1,0 +1,393 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>Atomized</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,400;0,8..30,600;0,8..30,700;1,8..30,500&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EDE7DD; --surface:#FBF8F2; --surface-2:#E2DACB;
+  --ink:#2B2620; --ink-soft:#5B5346; --ink-faint:#8B8272;
+  --rule:#CFC4AC;
+  --shadow:0 1px 0 rgba(43,38,32,.05), 0 10px 26px -16px rgba(43,38,32,.35);
+  --font-display:"Piazzolla",Georgia,serif;
+  --font-body:"Public Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+
+  --cat-Repetitives:#2a78d6; --cat-Amplifiers:#eb6834; --cat-Antithesis:#1baf7a;
+  --cat-Substitutive:#eda100; --cat-Uncategorized:#e87ba4; --cat-Additions:#008300;
+  --res-open:#2a78d6; --res-resolved:#eb6834; --res-addition:#1baf7a;
+  --node-fill:#5B5346; --node-ring:#FBF8F2;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+    --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+    --rule:#453A2C;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+    --cat-Repetitives:#3987e5; --cat-Amplifiers:#d95926; --cat-Antithesis:#199e70;
+    --cat-Substitutive:#c98500; --cat-Uncategorized:#d55181; --cat-Additions:#008300;
+    --res-open:#3987e5; --res-resolved:#d95926; --res-addition:#199e70;
+    --node-fill:#BDB2A0; --node-ring:#241F19;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1B1712; --surface:#241F19; --surface-2:#332B22;
+  --ink:#EDE6D8; --ink-soft:#BDB2A0; --ink-faint:#8A8071;
+  --rule:#453A2C;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 30px -16px rgba(0,0,0,.6);
+  --cat-Repetitives:#3987e5; --cat-Amplifiers:#d95926; --cat-Antithesis:#199e70;
+  --cat-Substitutive:#c98500; --cat-Uncategorized:#d55181; --cat-Additions:#008300;
+  --res-open:#3987e5; --res-resolved:#d95926; --res-addition:#199e70;
+  --node-fill:#BDB2A0; --node-ring:#241F19;
+}
+*{box-sizing:border-box;}
+html{color-scheme:light dark;}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:14.5px;line-height:1.6;}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;text-wrap:balance;margin:0;color:var(--ink);}
+a{color:var(--ink);}
+.app{max-width:980px;margin:0 auto;padding:34px 18px 80px;}
+
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+h1{font-size:34px;margin-bottom:14px;}
+.lede{font-size:16px;color:var(--ink-soft);max-width:66ch;margin:0 0 10px;}
+.lede em{color:var(--ink);}
+.source-note{font-size:12.5px;color:var(--ink-faint);max-width:66ch;margin:0 0 26px;}
+.source-note a{color:var(--ink-faint);}
+
+.stat-row{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:22px;font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);}
+.stat-row b{color:var(--ink);font-size:15px;font-weight:700;}
+
+.mode-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.mode-btn{background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:7px 15px;font-size:12.5px;color:var(--ink-soft);cursor:pointer;font-weight:600;font-family:var(--font-body);}
+.mode-btn.active{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+
+.graph-shell{background:var(--surface);border:1px solid var(--rule);border-radius:10px;box-shadow:var(--shadow);padding:14px;margin-bottom:16px;position:relative;}
+svg#graph{width:100%;height:auto;display:block;cursor:default;}
+svg#graph .edge{stroke-width:1.6;fill:none;transition:opacity .15s;}
+svg#graph .edge.dim{opacity:.08;}
+svg#graph .edge.focus{stroke-width:2.6;}
+svg#graph .node-dot{fill:var(--node-fill);stroke:var(--node-ring);stroke-width:2;transition:opacity .15s;}
+svg#graph .node-dot.dim{opacity:.15;}
+svg#graph .node-hit{fill:transparent;cursor:pointer;}
+svg#graph .node-label{font-family:var(--font-mono);font-size:9.5px;fill:var(--ink);pointer-events:none;opacity:0;transition:opacity .12s;}
+svg#graph .node-label.show{opacity:1;}
+
+.tooltip{position:absolute;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;padding:7px 10px;border-radius:6px;line-height:1.5;max-width:230px;box-shadow:var(--shadow);opacity:0;transition:opacity .1s;z-index:5;font-family:var(--font-body);}
+.tooltip b{font-family:var(--font-display);}
+.tooltip .meta{font-family:var(--font-mono);font-size:10.5px;opacity:.75;margin-top:3px;}
+
+.hint{font-size:12px;color:var(--ink-faint);text-align:center;margin:0 0 20px;}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.legend-item{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:6px 12px 6px 8px;font-size:12px;color:var(--ink-soft);cursor:pointer;user-select:none;}
+.legend-item.off{opacity:.4;}
+.legend-swatch{width:20px;height:0;border-top-width:3px;border-top-style:solid;flex-shrink:0;}
+.legend-item b{color:var(--ink);font-family:var(--font-mono);font-weight:700;}
+
+.table-wrap{display:none;background:var(--surface);border:1px solid var(--rule);border-radius:10px;box-shadow:var(--shadow);overflow-x:auto;margin-bottom:16px;}
+.table-wrap.show{display:block;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:640px;}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);}
+th{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);}
+td.words{font-size:13px;}
+td.words b{font-weight:700;}
+td .cat-tag{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+
+.toggle-view{background:transparent;border:none;color:var(--ink-faint);font-size:12px;text-decoration:underline;cursor:pointer;font-family:var(--font-body);padding:0;margin-bottom:26px;display:inline-block;}
+
+.about-block{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px;}
+.about-block h3{font-size:15px;margin-bottom:8px;}
+.about-block p{color:var(--ink-soft);font-size:13.5px;line-height:1.7;margin:0 0 10px;max-width:74ch;}
+.about-block p:last-child{margin-bottom:0;}
+footer{text-align:center;color:var(--ink-faint);font-size:11px;margin-top:30px;font-family:var(--font-mono);}
+@media (max-width:600px){ .stat-row{gap:14px;} }
+</style></head><body>
+
+<div class="app">
+  <div class="kicker">Fascicle 34 &middot; Emily Dickinson, c. 1863</div>
+  <h1>Atomized</h1>
+  <p class="lede">Dickinson's variants work word by word, not poem by poem &mdash; McGann's word for it was <em>atomization</em>. This is that atomization drawn out: every base word and every variant across Fascicle 34, laid out as a network of who connects to whom.</p>
+  <p class="source-note">A continuation of the 2022&ndash;23 team's own network-graph visualizations (see <code>code/</code> and <code>data_visualization/</code> in the repo), re-run against the manuscript-verified, fully-classified data that didn't exist yet when those were built. Data: <a href="https://github.com/bfiliks/extractVariants/blob/main/data/fascicle34_final_classification.json" target="_blank" rel="noopener">fascicle34_final_classification.json</a>.</p>
+
+  <div class="stat-row">
+    <div><b id="statEdges">&nbsp;</b> relationships</div>
+    <div><b id="statWords">&nbsp;</b> unique words</div>
+    <div><b id="statPoems">&nbsp;</b> manuscript readings</div>
+  </div>
+
+  <div class="mode-tabs" id="modeTabs">
+    <button class="mode-btn active" data-mode="category">By taxonomy category</button>
+    <button class="mode-btn" data-mode="resolution">By resolution</button>
+  </div>
+
+  <div class="graph-shell">
+    <svg id="graph" viewBox="0 0 960 620" role="img" aria-label="Network graph of Fascicle 34's base-text and variant words, connected by classified relationship"></svg>
+    <div class="tooltip" id="tooltip"></div>
+  </div>
+  <p class="hint">Hover a word to trace its connections &middot; hover a line for the pair &middot; click a category below to isolate it</p>
+
+  <div class="legend" id="legend"></div>
+
+  <button class="toggle-view" id="toggleTable">View as a table instead</button>
+
+  <div class="table-wrap" id="tableWrap">
+    <table>
+      <thead><tr><th>Poem</th><th>Reading</th><th>Category</th><th>Resolution</th></tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <div class="about-block">
+    <h3>Reading this graph</h3>
+    <p>Every dot is a word that appears as a base text or a variant somewhere in Fascicle 34's documented apparatus. A line connects a base word to its variant, colored (and, since six colors alone can't stay tell-apart-able for every pair at a glance, also dashed) by what kind of relationship the taxonomy assigns it. A word that recurs across more than one poem &mdash; "Sun" appears as both a variant and, elsewhere, a base word &mdash; is drawn once and pulled toward all of its connections, the same convention the 2022 team's own word-co-occurrence scripts used.</p>
+    <p>Layout is a force simulation (repulsion between all words, attraction along each documented relationship) computed once on load, not read from any external library &mdash; consistent with the rest of this project's no-backend, plain-JavaScript tools. It has no claim to meaning beyond making clusters and outliers visible: a word pulled to the graph's edge has few or no repeated connections; a tight cluster shares vocabulary across several poems.</p>
+    <p>Manuscript readings from the Emily Dickinson Archive (Amherst College / Houghton Library, Harvard), used under EDA's <a href="https://curiosity.lib.harvard.edu/emily-dickinson-archive/about/copyright-terms-of-use" target="_blank" rel="noopener">Copyright &amp; Terms of Use</a> (CC BY-NC-ND 3.0). Classification and credit: see <a href="https://github.com/bfiliks/extractVariants/blob/main/results_fascicle34_classification.md" target="_blank" rel="noopener">results_fascicle34_classification.md</a>.</p>
+  </div>
+
+  <footer>Emily Dickinson Archive material used under CC BY-NC-ND 3.0, personal/non-commercial research. Independent research page, not an EDA or Harvard product.</footer>
+</div>
+
+<script>
+(function(){
+  var W = 960, H = 620;
+
+  var CATS = [
+    { key:"Repetitives",   label:"Repetitives",             dash:"" },
+    { key:"Amplifiers",    label:"Amplifiers",              dash:"7,3" },
+    { key:"Antithesis",    label:"Antithesis",              dash:"1,3" },
+    { key:"Substitutive",  label:"Substitutive (undefined)",dash:"9,2,2,2" },
+    { key:"Uncategorized", label:"Uncategorized",           dash:"1,5" },
+    { key:"Additions",     label:"Additions",               dash:"11,3,2,3" }
+  ];
+  var RES = [
+    { key:"Non-exclusive", label:"Genuinely open (93%)",       dash:"" },
+    { key:"Exclusive",     label:"Resolved by context",        dash:"7,3" },
+    { key:"Addition",      label:"Addition, not alternative",  dash:"1,3" }
+  ];
+
+  function catKey(level1){
+    if (level1.indexOf("Antithesis") === 0) return "Antithesis";
+    if (level1.indexOf("Substitutive") === 0) return "Substitutive";
+    return level1;
+  }
+  function resKey(level2){
+    if (level2 === "Non-exclusive") return "Non-exclusive";
+    if (level2 === "Exclusive") return "Exclusive";
+    return "Addition";
+  }
+  function esc(s){ return (s==null?"":String(s)).replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+
+  fetch("data/fascicle34_final_classification.json").then(function(r){ return r.json(); }).then(function(data){
+    init(data.classifications);
+  }).catch(function(err){
+    document.getElementById("graph").outerHTML = '<p style="color:var(--ink-faint)">Could not load data: ' + esc(err.message) + '</p>';
+  });
+
+  function init(rows){
+    document.getElementById("statEdges").textContent = rows.length;
+    document.getElementById("statPoems").textContent = new Set(rows.map(function(r){return r.poem;})).size;
+
+    var nodeIndex = {}, nodes = [];
+    function nodeFor(word){
+      if (!(word in nodeIndex)){
+        nodeIndex[word] = nodes.length;
+        nodes.push({ id: word, x: W/2 + (Math.random()-0.5)*W*0.85, y: H/2 + (Math.random()-0.5)*H*0.85, degree: 0 });
+      }
+      return nodeIndex[word];
+    }
+    var edges = rows.map(function(r){
+      var a = nodeFor(r.base), b = nodeFor(r.variant);
+      nodes[a].degree++; nodes[b].degree++;
+      return { a:a, b:b, catKey: catKey(r.level_1), resKey: resKey(r.level_2), poem:r.poem, base:r.base, variant:r.variant, level_1:r.level_1, level_2:r.level_2 };
+    });
+    document.getElementById("statWords").textContent = nodes.length;
+
+    simulate(nodes, edges);
+    render(nodes, edges, "category");
+    renderLegend("category");
+    renderTable(rows);
+
+    document.getElementById("modeTabs").addEventListener("click", function(e){
+      var btn = e.target.closest(".mode-btn");
+      if (!btn) return;
+      document.querySelectorAll(".mode-btn").forEach(function(b){ b.classList.toggle("active", b===btn); });
+      var mode = btn.dataset.mode;
+      render(nodes, edges, mode);
+      renderLegend(mode);
+    });
+
+    document.getElementById("toggleTable").addEventListener("click", function(){
+      var wrap = document.getElementById("tableWrap");
+      var shown = wrap.classList.toggle("show");
+      this.textContent = shown ? "Back to the graph" : "View as a table instead";
+      document.querySelector(".graph-shell").style.display = shown ? "none" : "block";
+      document.getElementById("legend").style.display = shown ? "none" : "flex";
+    });
+  }
+
+  function simulate(nodes, edges){
+    var k = Math.sqrt((W*H) / Math.max(nodes.length, 1)) * 0.9;
+    var iterations = 350;
+    for (var iter = 0; iter < iterations; iter++){
+      for (var i = 0; i < nodes.length; i++){ nodes[i].fx = (W/2 - nodes[i].x) * 0.006; nodes[i].fy = (H/2 - nodes[i].y) * 0.006; }
+      for (i = 0; i < nodes.length; i++){
+        for (var j = i+1; j < nodes.length; j++){
+          var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+          var dist2 = dx*dx + dy*dy || 0.01, dist = Math.sqrt(dist2);
+          var force = (k*k) / dist2 * dist;
+          var ux = dx/dist, uy = dy/dist;
+          nodes[i].fx += ux*force*0.02; nodes[i].fy += uy*force*0.02;
+          nodes[j].fx -= ux*force*0.02; nodes[j].fy -= uy*force*0.02;
+        }
+      }
+      for (i = 0; i < edges.length; i++){
+        var a = nodes[edges[i].a], b = nodes[edges[i].b];
+        var dx2 = a.x - b.x, dy2 = a.y - b.y;
+        var dist3 = Math.sqrt(dx2*dx2 + dy2*dy2) || 0.01;
+        var force2 = (dist3*dist3) / k * 0.012;
+        var ux2 = dx2/dist3, uy2 = dy2/dist3;
+        a.fx -= ux2*force2; a.fy -= uy2*force2;
+        b.fx += ux2*force2; b.fy += uy2*force2;
+      }
+      var temp = Math.max(0.03, 1 - iter/iterations);
+      for (i = 0; i < nodes.length; i++){
+        var n = nodes[i];
+        var disp = Math.sqrt(n.fx*n.fx + n.fy*n.fy) || 0.01;
+        var capped = Math.min(disp, 14) * temp;
+        n.x += (n.fx/disp) * capped;
+        n.y += (n.fy/disp) * capped;
+        n.x = Math.max(24, Math.min(W-24, n.x));
+        n.y = Math.max(24, Math.min(H-24, n.y));
+      }
+    }
+  }
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  function sel(tag, attrs){
+    var el = document.createElementNS(svgNS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  function render(nodes, edges, mode){
+    var svg = document.getElementById("graph");
+    svg.innerHTML = "";
+    var meta = mode === "category" ? CATS : RES;
+    var keyFn = mode === "category" ? "catKey" : "resKey";
+    var varPrefix = mode === "category" ? "--cat-" : "--res-";
+
+    var edgeEls = [], nodeEls = [], labelEls = [];
+
+    function clearHighlight(){
+      edgeEls.forEach(function(el){ el.classList.remove("dim"); el.classList.remove("focus"); });
+      nodeEls.forEach(function(el){ el.classList.remove("dim"); });
+      labelEls.forEach(function(el){ el.classList.remove("show"); });
+    }
+    function highlightEdgeAt(i){
+      var e = edges[i];
+      edgeEls.forEach(function(el, j){ el.classList.toggle("dim", j!==i); el.classList.toggle("focus", j===i); });
+      nodeEls.forEach(function(el, j){ el.classList.toggle("dim", j!==e.a && j!==e.b); });
+      labelEls.forEach(function(el, j){ el.classList.toggle("show", j===e.a || j===e.b); });
+    }
+    function highlightNodeAt(i){
+      var connected = {}; connected[i] = true;
+      edges.forEach(function(e, ei){
+        var hit = e.a === i || e.b === i;
+        if (hit){ connected[e.a] = true; connected[e.b] = true; }
+        edgeEls[ei].classList.toggle("focus", hit);
+        edgeEls[ei].classList.toggle("dim", !hit);
+      });
+      nodeEls.forEach(function(el, j){ el.classList.toggle("dim", !connected[j]); });
+      labelEls.forEach(function(el, j){ el.classList.toggle("show", !!connected[j]); });
+    }
+
+    edges.forEach(function(e, i){
+      var a = nodes[e.a], b = nodes[e.b];
+      var m = meta.filter(function(c){ return c.key === e[keyFn]; })[0] || meta[meta.length-1];
+      var line = sel("line", { class:"edge", x1:a.x, y1:a.y, x2:b.x, y2:b.y });
+      line.style.stroke = "var(" + varPrefix + (mode==="category" ? e.catKey : (e.resKey==="Non-exclusive"?"open":e.resKey==="Exclusive"?"resolved":"addition")) + ")";
+      if (m.dash) line.setAttribute("stroke-dasharray", m.dash);
+      svg.appendChild(line);
+      edgeEls.push(line);
+      line.addEventListener("mouseenter", function(event){ highlightEdgeAt(i); showTip(e, event); });
+      line.addEventListener("mousemove", moveTip);
+      line.addEventListener("mouseleave", function(){ clearHighlight(); hideTip(); });
+    });
+
+    nodes.forEach(function(n, i){
+      var r = 3 + Math.min(6, Math.sqrt(n.degree) * 1.6);
+      var dot = sel("circle", { class:"node-dot", cx:n.x, cy:n.y, r:r });
+      var hit = sel("circle", { class:"node-hit", cx:n.x, cy:n.y, r:r+6 });
+      var label = sel("text", { class:"node-label", x:n.x+r+4, y:n.y+3 });
+      label.textContent = n.id;
+      svg.appendChild(dot); svg.appendChild(hit); svg.appendChild(label);
+      nodeEls.push(dot); labelEls.push(label);
+      hit.addEventListener("mouseenter", function(event){ highlightNodeAt(i); showNodeTip(n, event); });
+      hit.addEventListener("mousemove", moveTip);
+      hit.addEventListener("mouseleave", function(){ clearHighlight(); hideTip(); });
+    });
+
+    window._graphState = { nodes:nodes, edges:edges, edgeEls:edgeEls, nodeEls:nodeEls, labelEls:labelEls, mode:mode, meta:meta, keyFn:keyFn };
+  }
+
+  var tip = document.getElementById("tooltip");
+  function showTip(e, event){
+    tip.innerHTML = '<b>' + esc(e.base) + ' &rarr; ' + esc(e.variant) + '</b><div class="meta">' + esc(e.poem) + '</div><div class="meta">' + esc(e.level_1) + (e.level_2 ? ' &middot; ' + esc(e.level_2) : '') + '</div>';
+    tip.style.opacity = 1;
+    moveTip(event);
+  }
+  function showNodeTip(n, event){
+    tip.innerHTML = '<b>' + esc(n.id) + '</b><div class="meta">' + n.degree + ' connection' + (n.degree===1?'':'s') + '</div>';
+    tip.style.opacity = 1;
+    moveTip(event);
+  }
+  function hideTip(){ tip.style.opacity = 0; }
+  function moveTip(event){
+    var shell = document.querySelector(".graph-shell").getBoundingClientRect();
+    tip.style.left = (event.clientX - shell.left + 14) + "px";
+    tip.style.top = (event.clientY - shell.top + 10) + "px";
+  }
+
+  function renderLegend(mode){
+    var meta = mode === "category" ? CATS : RES;
+    var varPrefix = mode === "category" ? "--cat-" : "--res-";
+    var el = document.getElementById("legend");
+    var counts = {};
+    window._graphState.edges.forEach(function(e){
+      var k = mode === "category" ? e.catKey : e.resKey;
+      counts[k] = (counts[k]||0) + 1;
+    });
+    el.innerHTML = meta.map(function(m){
+      var varName = mode === "category" ? m.key : (m.key==="Non-exclusive"?"open":m.key==="Exclusive"?"resolved":"addition");
+      return '<div class="legend-item" data-key="' + m.key + '"><span class="legend-swatch" style="border-top-color:var(' + varPrefix + varName + ');border-top-style:' + (m.dash ? "dashed" : "solid") + '"></span>' + esc(m.label) + ' <b>' + (counts[m.key]||0) + '</b></div>';
+    }).join("");
+    el.querySelectorAll(".legend-item").forEach(function(item){
+      item.addEventListener("click", function(){
+        item.classList.toggle("off");
+        var key = item.dataset.key;
+        var state = window._graphState;
+        var keyFn = state.keyFn;
+        state.edgeEls.forEach(function(edgeEl, i){
+          var e = state.edges[i];
+          if (e[keyFn] === key){
+            edgeEl.style.display = item.classList.contains("off") ? "none" : "";
+          }
+        });
+      });
+    });
+  }
+
+  function renderTable(rows){
+    var body = document.getElementById("tableBody");
+    body.innerHTML = rows.map(function(r){
+      var ck = catKey(r.level_1);
+      return '<tr><td>' + esc(r.poem) + '</td>' +
+        '<td class="words"><b>' + esc(r.base) + '</b> &rarr; <b>' + esc(r.variant) + '</b></td>' +
+        '<td><span class="cat-tag" style="background:var(--cat-' + ck + ')"></span>' + esc(r.level_1) + '</td>' +
+        '<td>' + esc(r.level_2 || "Addition") + '</td></tr>';
+    }).join("");
+  }
+})();
+</script>
+</body></html>
